@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>TricksyHobbit</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/navbar-fixed-top.css">
+    <link rel="stylesheet" href="/stylesheets/application.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +14,7 @@
   </head>
 
   <body>
+    <%= erb :navbar %>
     <%= yield %>
   </body>
 </html>
