@@ -1,0 +1,22 @@
+body {
+  padding-top: 70px;
+  background-color: #FE4365;
+  font-family: 'Open Sans'
+}
+
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  font-size: 3rem;
+}
+
+.navbar-inverse .navbar-nav li a.navbar-info {
+  cursor: default;
+  padding-right: 60px;
+  color: whitesmoke;
+}
+
+.navbar-inverse .navbar-nav li a.navbar-info:hover {
+  cursor: default;
+  padding-right: 60px;
+  color: whitesmoke;
+}

@@ -1,0 +1,14 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-header">
+		<p class="navbar-brand">Jeopardy</p>
+	</div>
+	<% if @game && @game.id %>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="nav-item disabled">
+					<p class="navbar-text navbar-right">Signed in as Mark Otto</p>
+				</li>
+			</ul>
+		</div>
+	<% end %>
+</nav>
