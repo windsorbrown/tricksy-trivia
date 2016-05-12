@@ -14,7 +14,7 @@
   </head>
 
   <body>
-  <%= erb :navbar %>
+  <%= render 'layouts/navbar' %>
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     Image: <%= image_tag current_user.image %>
