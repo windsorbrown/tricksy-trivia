@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-ruby '~> 2.3.0'
+ruby '~> 2.3.1'
 
 gem 'figaro' #to make keys hidden 
 gem 'omniauth-twitter' #auth with twitter

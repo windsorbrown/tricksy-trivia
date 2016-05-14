@@ -32,6 +32,7 @@ class User < ApplicationRecord
      link = "signed in with twitter"  #can easily call the tweet method on current_user to post a new tweet
     end
     link
+   # session[:user_id]
   end
 
 end

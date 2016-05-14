@@ -25,14 +25,17 @@
     <%= current_user.invite_friends %>
 
 
-
+    <%= print %>
 
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-  <% end %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "facebook-connect" %>
 
+
+
+      <%= link_to "Sign in with Twitter", "/auth/twitter", id: "twitter-connect" %>
+  <% end %>
+  <div  id = "show-me"> </div>
 
   <%= yield %>
   </body>
