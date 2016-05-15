@@ -1,6 +1,5 @@
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<!-- <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -10,7 +9,6 @@
       </button>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -33,6 +31,60 @@
 			</ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    </div>
+  </div></nav>
+ -->
+
+ <header>
+        
+        <div class="mid_search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        
+                        <%= link_to 'TRIXIE', root_url,  class:"navbar-brand" %>
+                        
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        
+                     <!--    <div class="popup_btn pull-right">
+
+                            <input type="text" class="form-control popup" name="s">
+                            
+                        </div> -->
+                        
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        
+                        <nav class="navbar-collapse collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                
+                                <% if current_user %>
+                               <li> <%= link_to "Welcome "+current_user.first_name, "#", id: "Dashboard" %></li>
+                               <li> <%= link_to image_tag current_user.image , class: "img-circle" %></li>
+                                <li> <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+                                   <% else %>
+                                  <!-- <li><a href="auth/facebook">Login</a></li> -->
+                                   <% end %>
+                             <!--    <li><a href="blog.html">Join A Game</a></li>
+                              -->   <!-- <li><a href="left_sidebar.html">Left Side</a></li>
+                                <li><a href="right_sidebar.html">Right Side</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="contact.html">Contact</a></li>   -->              
+                            </ul>
+                        </nav>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+   

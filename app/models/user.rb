@@ -35,4 +35,9 @@ class User < ApplicationRecord
    # session[:user_id]
   end
 
+  def first_name
+    name.split(" ")[0]
+  end
+
+
 end

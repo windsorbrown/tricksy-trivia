@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :sessions, only: [:create, :destroy]
+  resource :session, only: [:create, :destroy]
   resources :tweets, only: [:new, :create]
     
-  root to: "questions#show"  ##### can be changed to whatever we feel is the right thing to do .
+  root to: "pages#index"  ##### can be changed to whatever we feel is the right thing to do .
 end
 
