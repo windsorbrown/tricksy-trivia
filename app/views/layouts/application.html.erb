@@ -14,26 +14,28 @@
   </head>
 
   <body>
-  <%= render 'layouts/navbar' %>
-  
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    Image: <%= image_tag current_user.image %>
-     
+    <header>
+      <%= render 'layouts/navbar' %>
+      
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>!
+        Image: <%= image_tag current_user.image %>
+         
 
-    
-    <%= current_user.invite_friends %>
-
-
-
-
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-  <% end %>
+        
+        <%= current_user.invite_friends %>
 
 
-  <%= yield %>
+
+
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+      <% end %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
