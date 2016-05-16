@@ -1,39 +1,3 @@
-<!-- <nav class="navbar navbar-default navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-         
-      <ul id="login-dp" class="dropdown-menu">
-				<li>
-					 <div class="row">
-							<div class="col-md-12">
-								<div class="social-buttons">
-									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-								</div>
-							</div>
-                            <div class="bottom text-center">
-								Skip sign-in <a href="#"><b>Play Now!</b></a>
-							</div>
-					 </div>
-				</li>
-			</ul>
-        </li>
-      </ul>
-    </div>
-  </div></nav>
- -->
 
  <header>
         
@@ -47,12 +11,6 @@
                     </div>
                     
                     <div class="col-sm-9">
-                        
-                     <!--    <div class="popup_btn pull-right">
-
-                            <input type="text" class="form-control popup" name="s">
-                            
-                        </div> -->
                         
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -71,13 +29,7 @@
                                <li> <%= link_to image_tag current_user.image , class: "img-circle" %></li>
                                 <li> <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
                                    <% else %>
-                                  <!-- <li><a href="auth/facebook">Login</a></li> -->
                                    <% end %>
-                             <!--    <li><a href="blog.html">Join A Game</a></li>
-                              -->   <!-- <li><a href="left_sidebar.html">Left Side</a></li>
-                                <li><a href="right_sidebar.html">Right Side</a></li>
-                                <li><a href="typography.html">Typography</a></li>
-                                <li><a href="contact.html">Contact</a></li>   -->              
                             </ul>
                         </nav>
                     
