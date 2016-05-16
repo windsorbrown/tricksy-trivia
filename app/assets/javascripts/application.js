@@ -13,7 +13,6 @@
 // require_self
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 // require bootstrap-sprockets
 //require jquery.flexslider-min
 //= require_tree .
