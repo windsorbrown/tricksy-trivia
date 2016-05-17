@@ -24,6 +24,11 @@ Things you may want to cover:
 * ...
 
 
+///// in order to start using twitter/facebook again just simply change the sessions controller and fix up
+//sessions/new view
+
+
+
 USER STORIES
 
 - As a user 
