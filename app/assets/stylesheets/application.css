@@ -16,5 +16,5 @@
  *= require flexslider.css
  *= require prettyPhoto.css
  *= require style.css
-*= require_tree .
+ *= require_tree .
  */
