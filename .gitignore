@@ -25,3 +25,4 @@
 
 # rbenv
 .ruby-version
+.jshintrc
