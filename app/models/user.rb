@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :games
   
   def self.create_with_omniauth(auth)
     
