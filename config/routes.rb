@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :games
   # get 'profiles/show'
 
 
@@ -13,8 +14,8 @@ Rails.application.routes.draw do
   get 'user/join', to: 'pages#join_game', as: 'user/join_game'
 
 
-
-  resource :session, only: [:create, :destroy]
+  resources :users, only:[:show, :create]
+  resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
   resources :answer, only: [:update]
 
