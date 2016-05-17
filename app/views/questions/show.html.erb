@@ -1,4 +1,25 @@
-<section id="#mainArea">
-  <p>Question: <%= @question.question %></p>
-  <p>Answer: <%= @question.answer %></p>
+<section id="titleArea">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Question</h2>
+      </div>
+    </div>
+  </div>
 </section>
+
+<section id="processArea">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6">
+        <h3 id="question" 
+            data-question-id="<%= @question.id %>">
+            Question: <%= @question.question %></h3>
+        <form id="answer">
+          <input name="answer">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

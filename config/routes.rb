@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   resources :questions, only: [:show] 
+  resources :answer, only: [:update]
   
 
   # namespace :user do
