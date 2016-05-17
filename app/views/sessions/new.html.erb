@@ -1,2 +1,35 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+   <!-- start title area -->
+    <section id="titleArea">
+      <div class="container">
+       <div class="row">
+        <div class="col-lg-12">
+          <h2>Please login to continue</h2>
+        </div>
+       </div>
+      </div>
+    </section>
+    <!-- end title area -->
+  
+    <!-- start process area -->
+    <section id="processArea">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-6">
+                   
+<%= form_tag session_path do %>
+  <div>
+    <%= label_tag :uid %><br/>
+    <%= text_field_tag :uid %>
+  </div>
+
+  <div><%= submit_tag "Log In" %></div>
+<% end %>
+
+
+             <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
+            <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>                       
+          </div>
+        </div>
+      </div>
+    </section>
+    
