@@ -13,7 +13,13 @@
 // require_self
 //= require jquery
 //= require jquery_ujs
-// require turbolinks
-// require bootstrap-sprockets
-//require jquery.flexslider-min
+//= require bootstrap.min
+//= require jquery-1.10.2.min
+//= require jquery.mixitup.min
+//= require jquery.ui.map.min
+//= require scrolld.min.js
+//= require jquery.flexslider-min
+//= require retina-1.1.0.min
+//= require scripts
 //= require_tree .
+
