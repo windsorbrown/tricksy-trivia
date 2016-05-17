@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   
+  def create
+  
+  end
+
+
   def self.create_with_omniauth(auth)
     
     user = User.find_by(uid: auth.uid, provider:  auth.provider)

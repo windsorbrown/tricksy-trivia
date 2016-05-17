@@ -2,16 +2,36 @@
 
 one:
   provider: facebook
-  uid: 100000 
+  uid: 1
   name: FUser Name
   oauth_token: 0898309820384
   oauth_expires_at: 2026-05-12 12:51:33
+  image: http://lorempixel.com/50/50/
   user_name: someuser@some.com
 
 two:
   provider: twitter
-  uid: 100001
+  uid: 2
   name: TwitUser Name
   oauth_token: 0778973924
   oauth_expires_at: 2026-05-12 12:51:33
+  image: http://lorempixel.com/50/50/
   user_name: twitter@some.com
+
+three:
+  provider: twitter
+  uid: 3
+  name: TwitUser 2
+  oauth_token: 07789732222
+  oauth_expires_at: 2026-05-12 12:51:33
+  image: http://lorempixel.com/50/50/
+  user_name: twitter@some1.com
+
+four:
+  provider: twitter
+  uid: 4
+  name: TwitUser 3
+  oauth_token: 07789732323
+  oauth_expires_at: 2026-05-12 12:51:33
+  image: http://lorempixel.com/50/50/
+  user_name: twitter@some33.com
