@@ -2,14 +2,16 @@
 
 one:
   provider: facebook
-  uid: 
-  name: MyString
-  oauth_token: MyString
-  oauth_expires_at: 2016-05-12 12:51:33
+  uid: 100000 
+  name: FUser Name
+  oauth_token: 0898309820384
+  oauth_expires_at: 2026-05-12 12:51:33
+  user_name: someuser@some.com
 
 two:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  oauth_token: MyString
-  oauth_expires_at: 2016-05-12 12:51:33
+  provider: twitter
+  uid: 100001
+  name: TwitUser Name
+  oauth_token: 0778973924
+  oauth_expires_at: 2026-05-12 12:51:33
+  user_name: twitter@some.com
