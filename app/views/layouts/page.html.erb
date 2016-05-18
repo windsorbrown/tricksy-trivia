@@ -11,29 +11,31 @@
 
   <body role="document">
     <%= render 'layouts/navbar' %>
-
     <main>
-    <section id="titleArea">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2><%= params[:controller].capitalize %></h2>
+      <section id="titleArea">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6">
+              <h2><%= params[:controller].capitalize %></h2>
+            </div>
+             <div class="col-md-4 col-sm-6">
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-<section id="mainArea">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      <%= yield %>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
+      <section id="processArea">
+        <div class="container">
+          <div class="row">
+           <div class="col-md-10 col-sm-6">
+            <%= yield %>
+            </div>
+            <div class="col-md-2 col-sm-6">
+            
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-
     <%= render 'layouts/footer' %>
   </body>
 </html>
