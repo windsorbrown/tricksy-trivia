@@ -1,37 +1,39 @@
-   <!-- start title area -->
-    <section id="titleArea">
-    <div class="container">
+<!-- start title area -->
+<section id="titleArea">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>My Dashboard</h2>
+        </div>
+    </div>
+</div>
+</section>
+<!-- end title area -->
+
+<!-- start process area -->
+<section id="processArea">
+<div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h2>My Dashboard</h2>
+            <div class="col-md-8 col-sm-6">
+              <%= form_for Game.new do |f| %>
+                <%= f.submit "New Game" %>
+              <% end %>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <h2>Game Stats</h2>
+                <p>Games Won</p>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                </div>
+                <p>Games Lost</p>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </section>
-    <!-- end title area -->
-
-    <!-- start process area -->
-    <section id="processArea">
-    <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-6">
-                    <a href="http://localhost:3000/user/game?" onClick="this.href=this.href.split('?')[0]+'?'+(Math.floor(Math.random()*10000000000))">Start A new game</a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <h2>Game Stats</h2>
-                    <p>Games Won</p>
-                    <div class="progress progress-striped">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                            <span class="sr-only">40% Complete (success)</span>
-                        </div>
-                    </div>
-                    <p>Games Lost</p>
-                    <div class="progress progress-striped">
-                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
