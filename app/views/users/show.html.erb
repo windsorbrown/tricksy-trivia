@@ -18,8 +18,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-6">
-                    
-                    Start A new game                                                
+                   
+                  <%= form_for Game.new do |f| %>
+                    <%= f.submit "New Game" %>
+                  <% end %>                                        
 
             </div>
             <div class="col-md-4 col-sm-6">

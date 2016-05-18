@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  get 'user/dash', to: 'pages#dash' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller
+  get 'user/dash', to: 'users#show' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller
 
   
 
