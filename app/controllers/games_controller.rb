@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def create
     @owner = User.find(session[:user_id])
     @game = Game.create(owner: @owner)
@@ -6,7 +7,7 @@ class GamesController < ApplicationController
     @game.questions << Question.limit(5).order("RANDOM()")
     redirect_to @game, layout: 'page'
   end
-  
+
   def index
     render json: Game.all
   end
@@ -30,5 +31,4 @@ class GamesController < ApplicationController
     @game.players.delete(Player.where(user: @user))
     redirect_to @game, layout: 'page'
   end
-
 end

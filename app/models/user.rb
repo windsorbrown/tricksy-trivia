@@ -1,22 +1,22 @@
 class User < ApplicationRecord
+
   has_many :players
   has_many :games
-  
+
   def create
-  
+
   end
 
-
   def self.create_with_omniauth(auth)
-    
+
     user = User.find_by(uid: auth.uid, provider:  auth.provider)
     if User.exists?(user)
-      user  
-    else  
-      user = User.create(uid: auth.uid, 
+      user
+    else
+      user = User.create(uid: auth.uid,
             provider:  auth.provider, name: auth.info.name,
-            image: auth.info.image, oauth_token: auth.credentials.token, 
-             oauth_secret: auth.credentials.secret, user_name: auth.info.email)
+            image: auth.info.image, oauth_token: auth.credentials.token,
+            oauth_secret: auth.credentials.secret, user_name: auth.info.email)
       user.save
       user
     end
@@ -30,7 +30,7 @@ class User < ApplicationRecord
       config.access_token        = oauth_token
       config.access_token_secret = oauth_secret
     end
-    
+
     client.update(tweet)
   end
 
