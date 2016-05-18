@@ -1,15 +1,12 @@
-class Game
-  def self.start(*user)
+class Game < ApplicationRecord
+  belongs_to :owner, class_name: 'User'
+  has_many :players
+  has_many :users, through: :players
+  has_and_belongs_to_many :questions
 
-    user.each do |user|
-      ActionCable.server.broadcast "player_#{user.id}", {action: "game_start", msg: "#{user.name}"}  
-      unless user.id == self.id 
-        REDIS.set("opponent:#{user.id}")
-      end
-    end
-
+  def players
+    @players = self.users
   end
 
 end
 
-    
