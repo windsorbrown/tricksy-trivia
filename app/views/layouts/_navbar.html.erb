@@ -17,7 +17,7 @@
           <nav class="navbar-collapse collapse navbar-right" role="navigation">
             <ul class="nav navbar-nav">
               <% if current_user %>
-                <li> <%= link_to "Welcome "+current_user.first_name, "#", id: "Dashboard" %></li>
+                <li> <%= link_to "Welcome "+current_user.first_name, "/user/dash", id: "Dashboard" %></li>
                 <li> <%= link_to image_tag current_user.image , class: "img-circle" %></li>
                 <li> <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
               <% else %>
