@@ -4,9 +4,8 @@ class Game < ApplicationRecord
   has_many :users, through: :players
   has_and_belongs_to_many :questions
 
-  def players
-    @players = self.users
+  def add_player(user)
+    players << Player.new(user: user, game: self)
   end
-
 end
 
