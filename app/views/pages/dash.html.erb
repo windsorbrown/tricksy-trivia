@@ -16,15 +16,15 @@
         <div class="row">
             <div class="col-md-8 col-sm-6">
                 <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">
-                        <a href="http://localhost:3000/user/game?" onClick="this.href=this.href.split('?')[0]+'?'+(Math.floor(Math.random()*10000000000))">Start a new game</a>
-                    </button>
+                    <%= form_for Game.new do |f| %>
+                      <%= f.submit "New Game" %>
+                    <% end %>
                 </div><p></p>
                 <div class="row">
                     <div class="col-lg-6">
-                        <form method="get" action="/games/join">
+                        <form method="get" action="/games/?">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="game_number" placeholder="9-digit room number">
+                                <input type="text" class="form-control" name="join_game" placeholder="Enter room ID">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit">Join Game</button>
                                 </span>
@@ -32,9 +32,7 @@
                         </form>
                     </div><!-- /.col-lg-6 -->
                 </div>
-              <%= form_for Game.new do |f| %>
-                <%= f.submit "New Game" %>
-              <% end %>
+
             </div>
             <div class="col-md-4 col-sm-6">
                 <h2>Game Stats</h2>
