@@ -16,7 +16,7 @@ class User < ApplicationRecord
       user = User.create(uid: auth.uid,
             provider:  auth.provider, name: auth.info.name,
             image: auth.info.image, oauth_token: auth.credentials.token,
-             oauth_secret: auth.credentials.secret, user_name: auth.info.email)
+            oauth_secret: auth.credentials.secret, user_name: auth.info.email)
       user.save
       user
     end

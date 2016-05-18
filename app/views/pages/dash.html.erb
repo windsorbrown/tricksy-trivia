@@ -15,9 +15,24 @@
 <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-6">
-              <%= form_for Game.new do |f| %>
-                <%= f.submit "New Game" %>
-              <% end %>
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                    <%= form_for Game.new do |f| %>
+                      <%= f.submit "New Game" %>
+                    <% end %>
+                </div><p></p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form id = "game-form" method="get" action="/games/">
+                            <div class="input-group">
+                                <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Join Game</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </form>
+                    </div><!-- /.col-lg-6 -->
+                </div>
+
             </div>
             <div class="col-md-4 col-sm-6">
                 <h2>Game Stats</h2>
