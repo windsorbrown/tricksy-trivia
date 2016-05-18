@@ -20,4 +20,3 @@
 //= require jquery.flexslider-min
 //= require retina-1.1.0.min
 //= require scripts
-

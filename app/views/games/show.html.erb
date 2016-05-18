@@ -1,1 +1,39 @@
 Welcome to game <%= @game.id %>
+<div class="container">
+  <h1>
+    Welcome to <%=@game.owner.first_name %>'s game!
+  </h1>
+</div>
+
+<% if @game.owner.id == @user.id %>
+  <div>
+    <%= form_tag(new_game_path(@game), method: "get") do %>
+                    <%= submit_tag "Start the game!" %>
+                    <% end %>
+  </div>
+<% end %>
+
+<div>
+  Currently Waiting Players:
+    <ol>
+      <% @game.users.each do |player| %>
+        <div class="container-fluid">
+          <li>
+            <%= player.name %>
+            <% if player.id === @user.id && @game.owner != @user %>
+              <%= form_tag(game_path(@game), method: "patch") do %>
+                      <%= submit_tag "Leave this game!" %>
+              <% end %>
+            <% end %>
+          </li>
+        </div>
+
+        <% end %>
+    </ol>
+</div>
+
+<% unless @game.owner == @user || @game.users.include?(@user) %>
+  <%= form_tag(edit_game_path(@game), method: "get") do %>
+                    <%= submit_tag "Join this game!" %>
+                    <% end %>
+<% end %>
