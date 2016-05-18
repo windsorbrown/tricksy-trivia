@@ -1,4 +1,3 @@
-
 /*
  * jQuery FlexSlider v2.2.0
  * http://www.woothemes.com/flexslider/
@@ -10,16 +9,7 @@
  * Contributing author: Tyler Smith (@mbmufffin)
  */
 
-/*@font-face {
-  font-family: 'flexslider-icon';
-  src:url('flexslider-icon.eot');
-  src:url('flexslider-icon.eot?#iefix') format('embedded-opentype'),
-    url('flexslider-icon.svg#flexslider-icon') format('svg'),
-    url('flexslider-icon.woff') format('woff'),
-    url('flexslider-icon.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}*/
+
 /* Browser Resets *********************************/
 .flex-container a:active, .flexslider a:active, .flex-container a:focus, .flexslider a:focus { outline: none; }
 .slides, .flex-control-nav, .flex-direction-nav { margin: 0; padding: 0; list-style: none; }

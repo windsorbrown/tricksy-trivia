@@ -16,14 +16,14 @@
         <div class="row">
           <div class="col-md-12 col-sm-6">
                    
-<%= form_tag session_path do %>
-  <div>
-    <%= label_tag :uid %><br/>
-    <%= text_field_tag :uid %>
-  </div>
+            <%= form_tag session_path do %>
+              <div>
+                <%= label_tag :uid %><br/>
+                <%= text_field_tag :uid %>
+              </div>
 
-  <div><%= submit_tag "Log In" %></div>
-<% end %>
+              <div><%= submit_tag "Log In" %></div>
+            <% end %>
 
 
              <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
