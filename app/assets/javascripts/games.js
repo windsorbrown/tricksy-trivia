@@ -18,13 +18,17 @@ function getPlayers() {
           $("#player-list").append(tr);
           // $("<li>").addClass("player list-group-item").text(player.user_id);
           console.log(response);
-          setTimeout(getPlayers, 1000);
+          setTimeout(getPlayers, 10000);
       //   );
       // $("#player").html($newPlayer.html());
       });
     }
   });
 }
+
+
+
+
 
 $(function(){
   getPlayers();

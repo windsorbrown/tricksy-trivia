@@ -32,5 +32,15 @@ class GamesController < ApplicationController
     redirect_to @game, layout: 'page'
   end
 
+  def play
+    @game = Game.find(params[:game_id])
+    @questions = @game.questions
+    render json: @questions
+  end
+
+  def play_game
+    @game = Game.find(params[:game_id])
+    render layout: 'page'
+  end
 
 end

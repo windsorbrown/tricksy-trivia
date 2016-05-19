@@ -7,7 +7,7 @@ Welcome to game <%= @game.id %>
 
 <% if @game.owner.id == @user.id %>
   <div>
-    <%= form_tag(new_game_path(@game), method: "get") do %>
+    <%= form_tag(game_play_game_path(@game), method: "get") do %>
                     <%= submit_tag "Start the game!" %>
                     <% end %>
   </div>
