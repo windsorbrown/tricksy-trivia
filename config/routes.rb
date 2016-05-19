@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :games
-  # get 'profiles/show'
+   # get 'profiles/show'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'user/dash', to: 'users#show' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller
-  # get 'games/:id/players', to: 'games#players'
+   #get 'games/:id/players', to: 'games#players'
 
 
   resources :users, only:[:show, :create]
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
   resources :answer, only: [:update]
   resources :games do
     resources :players, only: [:index]
+    get '/play', to: 'games#play'
+    get '/play_game', to: 'games#play_game'
   end
 
 
