@@ -4,12 +4,10 @@ class Game < ApplicationRecord
   has_many :users, through: :players
   has_and_belongs_to_many :questions
 
+  enum status: [:pending, :active, :finished]
+
   def add_player(user)
     players << Player.new(user: user, game: self)
-  end
-
-  def active?
-    started && !finished
   end
 end
 
