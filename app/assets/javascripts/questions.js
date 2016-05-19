@@ -2,46 +2,42 @@
 // All this logic will automatically be available in application.js.
 
 function getQuestions() {
-
-  var url = window.location.pathname;
-  var urlsplit = url.split("/").slice(-1)[0];
-
+  var i = 0;
+  var question_array =[];
+  var urlreal = window.location.pathname;
+  var urlsplit = urlreal.split("/").slice(-1)[0];
+  var res = urlreal.replace(urlsplit, "");
+  var makeurl = window.location.origin + res + 'play';
+  console.log(makeurl);
    $.ajax({
       method: 'get',
-       url: window.location.pathname + '/play', // <-- get '/games/:game_number/players'
+       url: makeurl,
        dataType: 'json',
-       success: function(response) {
-  //     // window.players = response.user_id;
-  //     // $newPlayer = $("<ul />");
-    //   $("#player-list").empty();
-      // response.forEach(function(player) {
-  //       // $newPlayer.append(
-           var tr = $("<tr>");
-           tr.append("<td>" + response.category + "</td>");
-           
-           tr.append("<td>" + response.question + "</td>");
+       success: function(response) {         
+         response.forEach(function(question) {
+          setTimeout(function(){ showQuestion(question)}, i*10000);
+          i+=1; 
+        });       
+     }
+  });
 
-           tr.append("<td>" + response.choice1 + "</td>");
-
-           tr.append("<td>" + response.answer + "</td>");
-
-           tr.append("<td>" + response.choice3 + "</td>");
-
-           tr.append("<td>" + response.choice2 + "</td>");
-
-
-           $("#game_questions").append(tr);
-            console.log(response);
-  //         setTimeout(getPlayers, 10000);
-  //     //   );
-  //     // $("#player").html($newPlayer.html());
-  //     });
-      }
-     });
 }
 
 
 
+
+function showQuestion(question){
+  console.log("test");
+  var tr = $("<tr>");
+   $("#game_questions").empty(); 
+   tr.append("<td>" + question.category + "</td>");
+   tr.append("<td>" + question.question + "</td>");
+   tr.append("<td>" + question.choice1 + "</td>");
+   tr.append("<td>" + question.answer + "</td>");
+   tr.append("<td>" + question.choice3 + "</td>");
+   tr.append("<td>" + question.choice2 + "</td>");
+   $("#game_questions").append(tr);
+}
 
 
  $(function(){
