@@ -7,5 +7,9 @@ class Game < ApplicationRecord
   def add_player(user)
     players << Player.new(user: user, game: self)
   end
+
+  def active?
+    started && !finished
+  end
 end
 

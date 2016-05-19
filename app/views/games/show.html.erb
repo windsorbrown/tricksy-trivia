@@ -15,21 +15,12 @@ Welcome to game <%= @game.id %>
 
 <div>
   Currently Waiting Players:
-    <ol>
-      <% @game.users.each do |player| %>
-        <div class="container-fluid">
-          <li>
-            <%= player.name %>
-            <% if player.id === @user.id && @game.owner != @user %>
-              <%= form_tag(game_path(@game), method: "patch") do %>
-                      <%= submit_tag "Leave this game!" %>
-              <% end %>
-            <% end %>
-          </li>
-        </div>
-
-        <% end %>
-    </ol>
+    <table id="player-list"></table>
+    <% if @game.users.include?(@user) && @game.owner != @user %>
+      <%= form_tag(game_path(@game), method: "patch") do %>
+              <%= submit_tag "Leave this game!" %>
+      <% end %>
+    <% end %>
 </div>
 
 <% unless @game.owner == @user || @game.users.include?(@user) %>
