@@ -3,8 +3,7 @@
   <head>
     <title>TricksyHobbit</title>
     <%= csrf_meta_tags %>
-
-    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+   <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -26,12 +25,10 @@
       <section id="processArea">
         <div class="container">
           <div class="row">
-           <div class="col-md-10 col-sm-6">
+           <div class="col-md-12 col-sm-6">
             <%= yield %>
             </div>
-            <div class="col-md-2 col-sm-6">
-
-            </div>
+       
           </div>
         </div>
       </section>
