@@ -8,19 +8,12 @@ function getPlayers() {
     url: window.location.pathname + '/players', // <-- get '/games/:game_number/players'
     dataType: 'json',
     success: function(response) {
-      // window.players = response.user_id;
-      // $newPlayer = $("<ul />");
       $("#player-list").empty();
       response.forEach(function(player) {
-        // $newPlayer.append(
           var tr = $("<tr>");
           tr.append("<td>" + player.name + "</td>");
           $("#player-list").append(tr);
-          // $("<li>").addClass("player list-group-item").text(player.user_id);
-          console.log(response);
           setTimeout(getPlayers, 1000);
-      //   );
-      // $("#player").html($newPlayer.html());
       });
     }
   });

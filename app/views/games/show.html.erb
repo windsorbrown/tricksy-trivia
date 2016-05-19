@@ -2,28 +2,31 @@
   <h1>
     Welcome to <%=@game.owner.first_name %>'s game!
   </h1>
-</div>
-
-<% if @game.owner.id == @user.id %>
-  <div>
+  <% if @game.owner.id == @user.id %>
+  <div class="col-md-6 col-md-offset-0">
     <%= form_tag(new_game_path(@game), method: "get") do %>
-                    <%= submit_tag "Start the game!" %>
-                    <% end %>
-  </div>
-<% end %>
-
-<div>
-  Currently Waiting Players:
-    <table id="player-list"></table>
-    <% if @game.users.include?(@user) && @game.owner != @user %>
-      <%= form_tag(game_path(@game), method: "patch") do %>
-              <%= submit_tag "Leave this game!" %>
-      <% end %>
+    <%= submit_tag "Start the game!" %>
     <% end %>
-</div>
+  </div>
+  <% end %>
+</div><br>
 
-<% unless @game.owner == @user || @game.users.include?(@user) %>
-  <%= form_tag(edit_game_path(@game), method: "get") do %>
-                    <%= submit_tag "Join this game!" %>
-                    <% end %>
-<% end %>
+<div class="container">
+  <div class="jumbotron" id="player-queue">
+    <div id="waiting-players">
+      Currently Waiting Players:
+      <table id="player-list"></table>
+      <% if @game.users.include?(@user) && @game.owner != @user %>
+      <%= form_tag(game_path(@game), method: "patch") do %>
+      <%= submit_tag "Leave this game!" %>
+      <% end %>
+      <% end %>
+    </div>
+
+    <% unless @game.owner == @user || @game.users.include?(@user) %>
+      <%= form_tag(edit_game_path(@game), method: "get") do %>
+                        <%= submit_tag "Join this game!" %>
+                        <% end %>
+    <% end %>
+  </div>
+</div>
