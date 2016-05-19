@@ -1,9 +1,9 @@
 single_player:
   owner: bob
-  users: [bob]
   questions: [1, 2, 3]
+  status: finished
 
 multi_player:
   owner: jim
-  users: [jim, bob]
   questions: [3, 4, 5]
+  status: finished
