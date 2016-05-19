@@ -11,13 +11,16 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'user/dash', to: 'users#show' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller
-
+  # get 'games/:id/players', to: 'games#players'
 
 
   resources :users, only:[:show, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
   resources :answer, only: [:update]
+  resources :games do
+    resources :players, only: [:index]
+  end
 
 
   # namespace :user do

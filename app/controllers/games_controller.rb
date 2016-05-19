@@ -31,4 +31,6 @@ class GamesController < ApplicationController
     @game.players.delete(Player.where(user: @user))
     redirect_to @game, layout: 'page'
   end
+
+
 end
