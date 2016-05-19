@@ -1,10 +1,10 @@
 class User < ApplicationRecord
 
   has_many :players
-  has_many :games
+  has_many :games, through: :players
+  has_many :user_answers
 
   def create
-
   end
 
   def self.create_with_omniauth(auth)
@@ -48,7 +48,4 @@ class User < ApplicationRecord
   def first_name
     name.split(" ")[0]
   end
-
-
-
 end
