@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
+  #
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -16,9 +15,9 @@ Rails.application.routes.draw do
   resources :users, only:[:show, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
-  resources :answer, only: [:update]
 
   resources :games do
+    get '/finish', to: 'games#finish'
     resources :user_answers, only: [:create]
     resources :players, only: [:index]
     get '/play', to: 'games#play'
