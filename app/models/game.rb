@@ -7,13 +7,14 @@ class Game < ApplicationRecord
 
   enum status: [:pending, :active, :finished]
 
+  scope :finished, -> { where(status: finished) }
   def add_player(user)
     players << Player.new(user: user, game: self)
   end
 
   def winner
     return nil unless finished?
-    players.find_by(winner: true).user
+    players.find_by(winner: true)&.user
   end
 end
 
