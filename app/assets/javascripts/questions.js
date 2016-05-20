@@ -1,31 +1,16 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function() {
+  $.ajax({
+    method: 'get',
+    url: 'play',
+    dataType: 'json',
+    success: askQuestions
+  });
 
-function getQuestions() {
-  var i = 0;
-  var question_array =[];
-  var urlreal = window.location.pathname;
-  var urlsplit = urlreal.split("/").slice(-1)[0];
-  var res = urlreal.replace(urlsplit, "");
-  var makeurl = window.location.origin + res + 'play';
-   $.ajax({
-     method: 'get',
-     url: makeurl,
-     dataType: 'json',
-     success: startQuestions
-   });
-}
-
-function startQuestions(questions) {         
-  let i = 0;
-  nextQuestion();
-  function nextQuestion() {
-    if (i == questions.length) {
-      alert("finished");
-      return;
-    }
-    let question = questions[i++];
-    let choiceButton = function(answerText) {
+  function askQuestions(questions) {
+    let questionTimeout = null;
+    let i = 0;
+    nextQuestion();
+    function choiceButton(answerText) {
       return $("<button>")
         .click(function () {
           let questionId = $('#game-questions').data('questionId');
@@ -34,37 +19,39 @@ function startQuestions(questions) {
             method: 'post',
             dataType: 'json',
             data: {
-              answer: answerText, 
+              answer: answerText,
               question_id: questionId
             },
-            success: (res) => { 
-              alert(res.correct ? "Correct!" : "Wrong!"); 
-              nextQuestion(); 
-              clearTimeout(questionTimeout);
+            success: (res) => {
+              alert(res.correct ? "Correct!" : "Wrong!");
+              nextQuestion();
             }
           });
         })
       .text(answerText);
-    };
+    }
 
-    let tr = $("<tr>");
-    tr.append([
-        $("<td>").text(question.category),
-        $("<td>").text(question.question),
-        $("<td>").append(choiceButton(question.choice1)),
-        $("<td>").append(choiceButton(question.answer)),
-        $("<td>").append(choiceButton(question.choice2)),
-        $("<td>").append(choiceButton(question.choice3))
-    ]);
-    $("#game-questions")
-      .empty()
-      .append(tr)
-      .data('questionId', question.id);
-    let questionTimeout = setTimeout(nextQuestion, 2000);
+    function nextQuestion() {
+      clearTimeout(questionTimeout);
+      if (i == questions.length) {
+        alert("finished");
+        return;
+      }
+      renderQuestion(questions[i++]);
+      questionTimeout = setTimeout(nextQuestion, 2000);
+    }
+
+    function renderQuestion(question) {
+      let tds = [].concat(
+        ['category', 'question'].map((key) =>
+          $("<td>").text(question[key])),
+        ['answer', 'choice1', 'choice2', 'choice3'].map((key) =>
+            $("<td>").append(choiceButton(question[key]))));
+
+      $("#game-questions")
+        .data('questionId', question.id)
+        .empty()
+        .append(tds);
+    }
   }
-}
-
-
- $(function(){
-   getQuestions();
- });
+});
