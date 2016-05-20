@@ -15,28 +15,45 @@ function getQuestions() {
        dataType: 'json',
        success: function(response) {         
          response.forEach(function(question) {
-          setTimeout(function(){ showQuestion(question)}, i*10000);
+          setTimeout(function(){ showQuestion(question); }, i*2000);
           i+=1; 
         });       
      }
   });
-
 }
 
-
-
-
 function showQuestion(question){
-  console.log("test");
-  var tr = $("<tr>");
-   $("#game_questions").empty(); 
-   tr.append("<td>" + question.category + "</td>");
-   tr.append("<td>" + question.question + "</td>");
-   tr.append("<td>" + question.choice1 + "</td>");
-   tr.append("<td>" + question.answer + "</td>");
-   tr.append("<td>" + question.choice3 + "</td>");
-   tr.append("<td>" + question.choice2 + "</td>");
-   $("#game_questions").append(tr);
+  let choiceButton = function(answerText) {
+    return $("<button>")
+      .click(function () {
+        let questionId = $('#game-questions').data('questionId');
+        $.ajax({
+          url: 'user_answers',
+          method: 'post',
+          dataType: 'json',
+          data: {
+            answer: answerText, 
+            question_id: questionId
+          },
+          success: (res) => { alert(res.correct ? "Correct!" : "Wrong!"); }
+        });
+      })
+    .text(answerText);
+  };
+
+  let tr = $("<tr>");
+   tr.append([
+     $("<td>").text(question.category),
+     $("<td>").text(question.question),
+     $("<td>").append(choiceButton(question.choice1)),
+     $("<td>").append(choiceButton(question.answer)),
+     $("<td>").append(choiceButton(question.choice2)),
+     $("<td>").append(choiceButton(question.choice3))
+   ]);
+   $("#game-questions")
+     .empty()
+     .append(tr)
+     .data('questionId', question.id);
 }
 
 

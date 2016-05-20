@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
   resources :answer, only: [:update]
+
   resources :games do
+    resources :user_answers, only: [:create]
     resources :players, only: [:index]
     get '/play', to: 'games#play'
     get '/play_game', to: 'games#play_game'

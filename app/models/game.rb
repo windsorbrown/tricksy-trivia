@@ -7,6 +7,7 @@ class Game < ApplicationRecord
 
   enum status: [:pending, :active, :finished]
 
+  scope :finished, -> { where(status: finished) }
   def add_player(user)
     players << Player.new(user: user, game: self)
   end
