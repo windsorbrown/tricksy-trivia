@@ -14,7 +14,7 @@ class Game < ApplicationRecord
 
   def winner
     return nil unless finished?
-    players.find_by(winner: true).user
+    players.find_by(winner: true)&.user
   end
 end
 

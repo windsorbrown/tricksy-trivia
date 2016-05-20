@@ -42,6 +42,14 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @user = current_user
     @player = Player.find_by(user: @user, game: @game)
+    @game.active!
     render layout: 'page'
+  end
+
+  def finish
+    @game = Game.find(params[:game_id])
+    @game.finished!
+    Player.find_by(user: current_user, game: @game).update(winner: true)
+    render json: @game.status
   end
 end
