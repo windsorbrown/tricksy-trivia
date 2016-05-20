@@ -36,7 +36,7 @@ Rails.application.configure do
 
   # Action Cable endpoint configuration
   config.action_cable.url = '/cable'
-  config.action_cable.allowed_request_origins = [ 'http://tricksy-hobbit.herokuapp.com' ]
+  config.action_cable.allowed_request_origins = [ '*' ]
 
   # Don't mount Action Cable in the main server process.
   # config.action_cable.mount_path = nil
