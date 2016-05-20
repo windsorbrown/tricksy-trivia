@@ -12,14 +12,14 @@ function questionsGo() {
   });
 
   function askQuestions(questions) {
-    let questionTimeout = null;
-    let i = 0;
+    var questionTimeout = 0;
+    var i = 0;
     nextQuestion();
 
     function choiceButton(answerText) {
       return $("<button>")
         .click(function () {
-          let questionId = $('#game-questions').data('questionId');
+          var questionId = $('#game-questions').data('questionId');
           $.ajax({
             url: 'user_answers',
             method: 'post',
@@ -53,7 +53,7 @@ function questionsGo() {
     }
 
     function renderQuestion(question) {
-      let tds = [].concat(
+      var tds = [].concat(
         ['category', 'question'].map((key) =>
           $("<td>").text(question[key])),
         ['answer', 'choice1', 'choice2', 'choice3'].map((key) =>
@@ -65,4 +65,4 @@ function questionsGo() {
         .append(tds);
     }
   }
-} 
+}
