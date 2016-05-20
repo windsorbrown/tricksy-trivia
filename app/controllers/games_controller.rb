@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     @user = User.find(session[:user_id])
-    @game.players.delete(Player.where(user: @user))
+    @game.players.find_by(user: @user).destroy
     redirect_to @game, layout: 'page'
   end
 
