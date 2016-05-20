@@ -13,7 +13,6 @@
 # 2: 
 # # column: value
 1:
-  id: 1
   question: Born Aaron Chwatt, he won an Oscar for "Sayonara" under this name
   answer: Red Buttons
   category: reds
@@ -22,7 +21,6 @@
   choice3: bad choice 3
 
 2:
-  id: 2
   question: In 1990 Arie Luyendyk set a track record at this Memorial Day race with an average speed of 185.984 MPH
   answer: Indianapolis 500
   category: the rushin' revolution
@@ -31,7 +29,6 @@
   choice3: bad choice 3
 
 3:
-  id: 3 
   question: Over 100 kinds of viruses cause colds, infections of the upper part of this tract
   answer: respiratory tract
   category: the cold war
@@ -40,7 +37,6 @@
   choice3: bad choice 3
 
 4:
-  id: 4 
   question: You might have to be on a desert island before you get around to his 1722 novel "Colonel Jack"
   answer: Daniel Defoe
   category: little-read books
@@ -49,7 +45,6 @@
   choice3: bad choice 3
 
 5:
-  id: 5 
   question: Asked "Are you a man or a mouse?", Groucho replied, "Put a piece of" this "down there and you'll find out"
   answer: cheese
   category: marxisms
@@ -58,7 +53,6 @@
   choice3: bad choice 3
 
 6:
-  id: 6 
   question: 2-word name for the Communist army that brutally ruled Cambodia in the 1970s
   answer: Khmer Rouge
   category: communism
@@ -67,7 +61,6 @@
   choice3: bad choice 3
 
 7:
-  id: 7 
   question: He died October 11, 1991 after collapsing at a rehearsal of his new TV series, "The Royal Family"
   answer: Redd Foxx
   category: reds
@@ -76,7 +69,6 @@
   choice3: bad choice 3
 
 8:
-  id: 8 
   question: This supersonic airliner can shuttle you from Paris to New York City in less than 4 hours
   answer: the Concorde
   category: the rushin' revolution
@@ -85,7 +77,6 @@
   choice3: bad choice 3
 
 10:
-  id: 10 
   question: This author of "An American Tragedy" also wrote a little-read treatise called "Tragic America"
   answer: Theodore Dreiser
   category: little-read books
@@ -94,7 +85,6 @@
   choice3: bad choice 3
 
 11:
-  id: 11 
   question: "The tusks...were imbedded so firmly we couldn't budge them, of course in Alabama...."
   answer: "The Tusks A Loosa"
   category: marxisms
@@ -103,7 +93,6 @@
   choice3: bad choice 3
 
 12:
-  id: 12 
   question: Elected with both Communist & Socialist support, he was Chile's president from 1970-1973
   answer: Salvador Allende
   category: communism
@@ -112,7 +101,6 @@
   choice3: bad choice 3
 
 13:
-  id: 13 
   question: From 1934 to 1938 he was the voice of the Cincinnati Reds
   answer: Red Barber
   category: reds
@@ -121,7 +109,6 @@
   choice3: bad choice 3
 
 14:
-  id: 14 
   question: The name of this sled without runners is from a Micmac Indian word for "instrument for dragging"
   answer: toboggan
   category: the rushin' revolution
@@ -130,7 +117,6 @@
   choice3: bad choice 3
 
 15:
-  id: 15 
   question: Of stress, enlarged tonsils or wet feet, the one which experts say would most likely lead to a cold
   answer: stress
   category: the cold war
@@ -139,7 +125,6 @@
   choice3: bad choice 3
 
 16:
-  id: 16 
   question: Many readers don't get through the Slough of Despond in this 1678 John Bunyan work
   answer: The Pilgrim\'s Progress
   category: little-read books
@@ -148,7 +133,6 @@
   choice3: bad choice 3
 
 18:
-  id: 18 
   question: Shortened from 2 Russian words, it was the supreme policy-making body in the USSR
   answer: Politburo
   category: communism
@@ -157,7 +141,6 @@
   choice3: bad choice 3
 
 19:
-  id: 19 
   question: In 1995 Lenny Wilkins broke this man's record as the NBA's winningest coach
   answer: Red Auerbach
   category: reds
@@ -166,7 +149,6 @@
   choice3: bad choice 3
 
 21:
-  id: 21 
   question: Its "Plus" version for colds comes in sparkling original, orange & cherry flavors
   answer: Alka-Seltzer
   category: the cold war
@@ -175,7 +157,6 @@
   choice3: bad choice 3
 
 22:
-  id: 22 
   question: Kant strained brains with this type of analysis "Of Pure Reason" & "Of Judgement"
   answer: Critique
   category: little-read books
@@ -184,7 +165,6 @@
   choice3: bad choice 3
 
 23:
-  id: 23 
   question: This line divides the Earth into northern & southern hemispheres
   answer: Equator
   category: geographic terms
@@ -193,7 +173,6 @@
   choice3: bad choice 3
 
 24:
-  id: 24 
   question: Iberia is an airline based in this country
   answer: Spain
   category: the name's familiar
@@ -202,7 +181,6 @@
   choice3: bad choice 3
 
 25:
-  id: 25 
   question: This 1964 Peter Sellers title character is a mad German scientist
   answer: "Dr. Strangelove"
   category: the movies
@@ -211,7 +189,6 @@
   choice3: bad choice 3
 
 26:
-  id: 26 
   question: When this "Oliver Twist" author fell for an actress, his wife twisted his arm for a legal separation
   answer: Charles Dickens
   category: historic amours
@@ -220,7 +197,6 @@
   choice3: bad choice 3
 
 27:
-  id: 27 
   question: "People who live in glass houses..."
   answer: "Shouldn\'t throw stones"
   category: completes the proverb
@@ -229,7 +205,6 @@
   choice3: bad choice 3
 
 28:
-  id: 28 
   question: She was only in her 30s when she retired from film after the release of "Two-Faced Woman" in 1941
   answer: Greta Garbo
   category: "g.g."
@@ -238,7 +213,6 @@
   choice3: bad choice 3
 
 29:
-  id: 29 
   question: Till is defined as the rock material dragged under one of these as it moves
   answer: Glacier
   category: geographic terms
@@ -247,7 +221,6 @@
   choice3: bad choice 3
 
 30:
-  id: 30 
   question: Landseer's Lions are at the base of Nelson's Column in this square
   answer: Trafalgar Square
   category: the name's familiar
@@ -256,7 +229,6 @@
   choice3: bad choice 3
 
 31:
-  id: 31 
   question: Christopher Atkins learns about the birds & the bees on a desert island with this actress in "The Blue Lagoon"
   answer: Brooke Shields
   category: the movies
@@ -265,7 +237,6 @@
   choice3: bad choice 3
 
 32:
-  id: 32 
   question: He preferred the "bounty"ous beauty of Mauatua to Bligh & breadfruit
   answer: Fletcher Christian
   category: historic amours
@@ -274,7 +245,6 @@
   choice3: bad choice 3
 
 33:
-  id: 33 
   question: "Early to bed and early to rise, makes a man..."
   answer: "Healthy, wealthy, and wise"
   category: completes the proverb
@@ -283,7 +253,6 @@
   choice3: bad choice 3
 
 34:
-  id: 34 
   question: This composer's "Porgy And Bess" is perhaps the most popular opera ever written by an American
   answer: George Gershwin
   category: "g.g."
@@ -292,7 +261,6 @@
   choice3: bad choice 3
 
 35:
-  id: 35 
   question: A body of water usually smaller than a gulf; Botany is a famous one
   answer: Bay
   category: geographic terms
@@ -301,7 +269,6 @@
   choice3: bad choice 3
 
 36:
-  id: 36 
   question: In the 1960s Michael Abdul Malik of the U.K. & Malcolm Little of the U.S. both used this as their last name
   answer: X
   category: the name's familiar
@@ -310,7 +277,6 @@
   choice3: bad choice 3
 
 38:
-  id: 38 
   question: It's likely that Etta Place, the companion of this "kid", was a lady of the evening rather than a schoolmarm
   answer: Sundance Kid
   category: historic amours
@@ -319,7 +285,6 @@
   choice3: bad choice 3
 
 39:
-  id: 39 
   question: "Speech is silver, but..."
   answer: "Silence is golden"
   category: completes the proverb
@@ -328,7 +293,6 @@
   choice3: bad choice 3
 
 40:
-  id: 40 
   question: He provided live coverage of the Summer Olympics from Atlanta, while brother Bryant covered events in Nagano
   answer: Greg Gumbel
   category: "g.g."
@@ -337,7 +301,6 @@
   choice3: bad choice 3
 
 41:
-  id: 41 
   question: Normally, an atoll is made of this or nothing atoll
   answer: Coral
   category: geographic terms
@@ -346,7 +309,6 @@
   choice3: bad choice 3
 
 42:
-  id: 42 
   question: Traditional member of the Magi whose name is also a measure equal to 16 regular bottles of champagne
   answer: Balthazar
   category: the name's familiar
@@ -355,7 +317,6 @@
   choice3: bad choice 3
 
 43:
-  id: 43 
   question: Judith Guest's novel about a dysfunctional family became this 1980 movie with Mary Tyler Moore & Timothy Hutton
   answer: "Ordinary People"
   category: the movies
@@ -365,7 +326,6 @@
 
 
 45:
-  id: 45 
   question: "Ignorance of the law is..."
   answer: "No excuse"
   category: completes the proverb
@@ -374,7 +334,6 @@
   choice3: bad choice 3
 
 46:
-  id: 46 
   question: Her disco hit "I Will Survive" became an anthem for many women & is still popular today
   answer: Gloria Gaynor
   category: "g.g."
@@ -383,7 +342,6 @@
   choice3: bad choice 3
 
 47:
-  id: 47 
   question: A common place name in the Southwest, from a Spanish term, it's a dry river bed
   answer: Arroyo
   category: geographic terms
@@ -392,7 +350,6 @@
   choice3: bad choice 3
 
 48:
-  id: 48 
   question: Last name of Julian, UNESCO's first director-general; he was the brother of writer Aldous
   answer: Huxley
   category: the name's familiar
@@ -401,7 +358,6 @@
   choice3: bad choice 3
 
 49:
-  id: 49 
   question: Cary Grant played retired cat burglar John Robie in this Hitchcock film
   answer: "To Catch A Thief"
   category: the movies
@@ -410,11 +366,9 @@
   choice3: bad choice 3
 
 50:
-  id: 50 
   question: Louis I's lust for Lola Montez led him to lose the throne of this German kingdom
   answer: Bavaria
   category: historic amours
   choice1: bad choice 1
   choice2: bad choice 2
   choice3: bad choice 3
-

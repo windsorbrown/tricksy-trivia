@@ -23,7 +23,6 @@ function getPlayers() {
 
 
 
-
 $(function(){
-  getPlayers();
+//  getPlayers();
 });

@@ -1,11 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+1:
+  game: single_player
+  user: bob
+  question: 1
+  answer: "redbuttons"
+  correct: true
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+2:
+  game: single_player
+  user: bob
+  question: 2
+  answer: iunno
+  correct: false
+
+3:
+  game: single_player
+  user: bob
+  question: 3
+  answer: "respiratory tract"
+  correct: true

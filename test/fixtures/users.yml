@@ -1,20 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  id: 1
+jim:
   provider: facebook
   uid: 1
-  name: FUser Name
+  name: Jim
   oauth_token: 0898309820384
   oauth_expires_at: 2026-05-12 12:51:33
   image: http://lorempixel.com/50/50/
   user_name: someuser@some.com
 
-two:
-  id: 2
+bob:
   provider: twitter
   uid: 2
-  name: TwitUser Name
+  name: Bob
   oauth_token: 0778973924
   oauth_expires_at: 2026-05-12 12:51:33
   image: http://lorempixel.com/50/50/
