@@ -5,7 +5,7 @@
   </h1>
   <% if @game.owner.id == @user.id %>
   <div class="col-md-6 col-md-offset-0">
-    <%= form_tag(new_game_path(@game), method: "get") do %>
+    <%= form_tag(game_play_game_path(@game), method: "get") do %>
     <%= submit_tag "Start the game!" %>
     <% end %>
   </div>
