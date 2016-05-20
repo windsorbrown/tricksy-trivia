@@ -5,7 +5,7 @@ function getPlayers() {
   setTimeout(function() {
     $.ajax({
       method: 'get',
-      url: window.location.pathname + '/players', // <-- get '/games/:game_number/players'
+      url: window.location.pathname + '/players',
       dataType: 'json',
       success: function(response) {
         $("#player-list").empty();
