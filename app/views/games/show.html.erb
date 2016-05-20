@@ -17,14 +17,14 @@ Welcome to game <%= @game.id %>
   Currently Waiting Players:
     <table id="player-list"></table>
     <% if @game.users.include?(@user) && @game.owner != @user %>
-      <%= form_tag(game_path(@game), method: "patch") do %>
+      <%= form_tag(game_path(@game), remote:  true, method: "patch") do %>
               <%= submit_tag "Leave this game!" %>
       <% end %>
     <% end %>
 </div>
 
 <% unless @game.owner == @user || @game.users.include?(@user) %>
-  <%= form_tag(edit_game_path(@game), method: "get") do %>
+  <%= form_tag(edit_game_path(@game), remote: true, method: "get") do %>
                     <%= submit_tag "Join this game!" %>
                     <% end %>
 <% end %>
