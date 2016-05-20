@@ -26,3 +26,4 @@
 # rbenv
 .ruby-version
 .jshintrc
+/public/
