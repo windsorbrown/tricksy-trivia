@@ -5,11 +5,16 @@ class Game < ApplicationRecord
   has_many :user_answers
   has_and_belongs_to_many :questions
 
+
   enum status: [:pending, :active, :finished]
 
   scope :finished, -> { where(status: finished) }
   def add_player(user)
-    players << Player.new(user: user, game: self)
+    if  players.find_by(user_id: user.id)
+      return false
+     else  
+      players << Player.new(user: user, game: self)
+    end
   end
 
   def winner
