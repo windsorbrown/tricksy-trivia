@@ -22,19 +22,3 @@ class Game < ApplicationRecord
     players.find_by(winner: true)&.user
   end
 
-  # after_update do
-  #   ActionCable.server.broadcast "game_#{id}",
-  #     game_start: {game: self.id}
-  # end
-
-  # before_destroy do
-  #   ActionCable.server.broadcast "game_#{id}",
-  #      game_end: {game:self.id }
-  # end
-end
-
-
-
-
-
-
