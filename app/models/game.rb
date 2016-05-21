@@ -10,7 +10,7 @@ class Game < ApplicationRecord
 
   scope :finished, -> { where(status: finished) }
   def add_player(user)
-    if  players.find_by(user_id: user.id)
+    if players.find_by(user_id: user.id)
       return false
      else  
       players << Player.new(user: user, game: self)
@@ -21,6 +21,20 @@ class Game < ApplicationRecord
     return nil unless finished?
     players.find_by(winner: true)&.user
   end
+
+  # after_update do
+  #   ActionCable.server.broadcast "game_#{id}",
+  #     game_start: {game: self.id}
+  # end
+
+  # before_destroy do
+  #   ActionCable.server.broadcast "game_#{id}",
+  #      game_end: {game:self.id }
+  # end
 end
+
+
+
+
 
 
