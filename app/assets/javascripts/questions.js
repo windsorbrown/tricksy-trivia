@@ -49,7 +49,7 @@ function questionsGo() {
         return;
       }
       renderQuestion(questions[i++]);
-      questionTimeout = setTimeout(nextQuestion, 2000);
+      questionTimeout = setTimeout(nextQuestion, 10000);
     }
 
     function renderQuestion(question) {
