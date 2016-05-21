@@ -9,12 +9,15 @@ class Game < ApplicationRecord
 
   scope :finished, -> { where(status: finished) }
   def add_player(user)
-    players << Player.new(user: user, game: self)
-  end
+     if  players.find_by(user_id: user.id)
+       return false
+      else
+       players << Player.new(user: user, game: self)
+     end
+   end
 
   def winner
     return nil unless finished?
     players.find_by(winner: true)&.user
   end
 end
-

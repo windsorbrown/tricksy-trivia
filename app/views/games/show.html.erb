@@ -1,17 +1,16 @@
-Welcome to game <%= @game.id %>
 <div class="container">
+  Game ID: <%= @game.id %>
   <h1>
     Welcome to <%=@game.owner.first_name %>'s game!
   </h1>
-</div>
-
-<% if @game.owner.id == @user.id %>
-  <div>
+  <% if @game.owner.id == @user.id %>
+  <div class="col-md-6 col-md-offset-0">
     <%= form_tag(game_play_game_path(@game), method: "get") do %>
-                    <%= submit_tag "Start the game!" %>
-                    <% end %>
+    <%= submit_tag "Start the game!" %>
+    <% end %>
   </div>
-<% end %>
+  <% end %>
+</div><br>
 
 <div>
   Currently Waiting Players:
@@ -22,16 +21,18 @@ Welcome to game <%= @game.id %>
   </ul>
     <% if @game.users.include?(@user) && @game.owner != @user %>
       <%= form_tag(game_path(@game), method: "patch") do %>
-              <%= submit_tag "Leave this game!" %>
+      <%= submit_tag "Leave this game!" %>
       <% end %>
-    <% end %>
-</div>
+      <% end %>
+    </div>
 
-<% unless @game.owner == @user || @game.users.include?(@user) %>
-  <%= form_tag(edit_game_path(@game), method: "get") do %>
-                    <%= submit_tag "Join this game!" %>
-                    <% end %>
-<% end %>
+    <% unless @game.owner == @user || @game.users.include?(@user) %>
+      <%= form_tag(edit_game_path(@game), method: "get") do %>
+                        <%= submit_tag "Join this game!" %>
+                        <% end %>
+    <% end %>
+  </div>
+</div>
 
 <script>
 App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>}, {
