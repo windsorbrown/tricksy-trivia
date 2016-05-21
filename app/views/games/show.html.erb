@@ -19,6 +19,7 @@
       <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
     <% end %>
   </ul>
+   
     <% if @game.users.include?(@user) && @game.owner != @user %>
       <%= form_tag(game_path(@game), method: "patch") do %>
       <%= submit_tag "Leave this game!" %>
@@ -35,6 +36,7 @@
 </div>
 
 <script>
+var redirected = false;
 App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>}, {
   received: (data) => {
     let playerList = $('#player-list');
@@ -46,6 +48,15 @@ App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>
       let user = data.removed_user;
       playerList.find(`#user-${user.id}`).remove();
     }
+    else if (data.game_start){
+      let game = data.game_start.game
+      if (redirected === false){
+        window.location.replace("http://localhost:3000/games/"+game.id+"/play_game")
+       redirected = true;
+     }
+
+    }
   }
 })
+
 </script>

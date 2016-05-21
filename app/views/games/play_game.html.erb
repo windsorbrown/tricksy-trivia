@@ -10,8 +10,34 @@
 
     <div class="col-md-4 col-sm-6">
         <h1>Players progress</h1>
-        <!-- get player list from params from Ajax and poll to see their progress? -->
+      <ul id ="answers">
+      </ul>
+        <!-- get player list from params from Ajax and poll 
+        to see their progress? -->
+
     </div>
   </div>
 </div>
 <!--  -->
+
+
+ <script>
+App.cable.subscriptions.create({channel: "GameChannel", game_id: <%= @game.id %>}, {
+  received: (data) => {
+     let answers = $('#answers');
+     // if (data.game_start) {
+     //  //  game_room
+     //   let game = data.game_start;
+        answers.append($('<li>').text(data.game_start));
+     // }
+  //   else if (data.removed_user) {
+  //     let user = data.removed_user;
+  //     playerList.find(`#user-${user.id}`).remove();
+  //   }
+  // }
+  console.log(data);
+  console.log(data.game_start);
+  }
+
+})
+</script>
