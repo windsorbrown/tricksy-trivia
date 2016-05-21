@@ -22,3 +22,4 @@ class Game < ApplicationRecord
     players.find_by(winner: true)&.user
   end
 
+end
