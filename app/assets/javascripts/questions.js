@@ -9,16 +9,13 @@ $(function(){
 function questionsGo() {
   var the_url = window.location.pathname.match(/\d{9}/g);
   var g_id = the_url[0];
-
-
   App.cable.subscriptions.create({channel: "GameChannel", game_id: g_id }, {
-  received: (data) => {
-    var answers = $('#answers');
-    answers.append($("<li>").text(data.question.user.name));
-         console.log(data.question);
-       }
-
-    });
+    received: (data) => {
+      var answers = $('#answers');
+      answers.append($("<li>").text(data.question.user.name));
+        // console.log(data.question);
+    }
+  });
 
   $.ajax({
     method: 'get',
@@ -47,9 +44,10 @@ function questionsGo() {
             },
             dataType: 'json',
               success: (res) => {
-                
-                alert(res.correct ? "Correct!" : "Wrong!");
-     //           nextQuestion();
+             
+               // add scores here. 
+              //  alert(res.correct ? "Correct!" : "Wrong!");
+              //  nextQuestion();
               }
           });
         })
@@ -65,11 +63,11 @@ function questionsGo() {
             url: 'finish',
             method: 'post'
         });
-        alert("finished");
+   //     alert("finished");
         return;
       }
       renderQuestion(questions[i++]);
-      questionTimeout = setTimeout(nextQuestion, 20000);
+      questionTimeout = setTimeout(nextQuestion, 20000); //change this to 10 secs after testing
     }
 
     function renderQuestion(question) {

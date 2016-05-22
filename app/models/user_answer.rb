@@ -6,4 +6,5 @@ class UserAnswer < ApplicationRecord
   before_create do
     self.correct = (question.answer.downcase.tr(' ','') == answer.downcase.tr(' ',''))
   end
+
 end

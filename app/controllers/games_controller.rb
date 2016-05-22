@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     @user = current_user
     @player = Player.find_by(user: @user, game: @game)
 
-   
+   #if game is pending then make it active. otherwise. do nothing. basically cannot restart an old game.
 
     @game.active!
      ActionCable.server.broadcast "room_#{@game.id}",
@@ -54,9 +54,6 @@ class GamesController < ApplicationController
     close_game: {game: @game}
     
     render layout: 'page'
-
-
-
   end
 
   def finish
