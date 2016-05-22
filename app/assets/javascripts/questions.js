@@ -9,16 +9,13 @@ $(function(){
 function questionsGo() {
   var the_url = window.location.pathname.match(/\d{9}/g);
   var g_id = the_url[0];
-
-
   App.cable.subscriptions.create({channel: "GameChannel", game_id: g_id }, {
-  received: (data) => {
-    var answers = $('#answers');
-    answers.append($("<li>").text(data.question.user.name));
-         console.log(data.question);
-       }
-
-    });
+    received: (data) => {
+      var answers = $('#answers');
+      answers.append($("<li>").text(data.question.user.name));
+        // console.log(data.question);
+    }
+  });
 
   $.ajax({
     method: 'get',
