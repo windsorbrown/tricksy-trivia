@@ -18,8 +18,9 @@
       <div class="col-md-8 col-sm-6">
 
         <div class="btn-group btn-group-lg" role="group" aria-label="...">
-          <%= form_for Game.new do |f| %>
+          <%= form_for Game.new do |f| %>             
             <%= f.submit "New Game" %>
+            <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
           <% end %>
         </div><p></p>
         <div class="row">
@@ -37,9 +38,36 @@
       </div>
 
       <div class="col-md-4 col-sm-6">
-        <h2>Games</h2>
+        <h2>Public Games Open</h2>
+        <ul id="game-list">
+          <% @games.each do |game| %>
+            <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
+            <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <h2>Game History</h2>
         <%= render @user.games.where(status: :finished) %>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+App.cable.subscriptions.create({channel: "OverviewChannel"}, {
+  received: (data) => {
+    console.log(data);
+    let gameList = $('#game-list');
+    if (data.open_game && data.open_game.game.keep_private === 0){
+      let owner = data.open_game.owner;
+      let game = data.open_game.game;
+      gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `http://localhost:3000/games/${game.id}`}));
+    } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
+      let game = data.close_game.game;
+      gameList.find(`#game-${game.id}`).remove();
+    }
+  }
+})
+
+
+</script>
