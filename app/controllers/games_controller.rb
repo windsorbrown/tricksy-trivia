@@ -2,9 +2,11 @@ class GamesController < ApplicationController
 
   def create
     @owner = User.find(session[:user_id])
-    @game = Game.create(owner: @owner)
+    @game = Game.create(owner: @owner, keep_private: params[:game]['keep_private'])
     @game.add_player(@owner)
     @game.questions << Question.limit(5).order("RANDOM()")
+    ActionCable.server.broadcast "overview_channel",
+    open_game: {game: @game, owner: @owner}
     redirect_to @game, layout: 'page'
   end
 
@@ -48,6 +50,8 @@ class GamesController < ApplicationController
     @game.active!
      ActionCable.server.broadcast "room_#{@game.id}",
     game_start: {game: @game, status:@game.status}
+    ActionCable.server.broadcast "overview_channel",
+    close_game: {game: @game}
     
     render layout: 'page'
 
