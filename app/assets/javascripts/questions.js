@@ -44,9 +44,10 @@ function questionsGo() {
             },
             dataType: 'json',
               success: (res) => {
-                
-                alert(res.correct ? "Correct!" : "Wrong!");
-     //           nextQuestion();
+             
+               // add scores here. 
+              //  alert(res.correct ? "Correct!" : "Wrong!");
+              //  nextQuestion();
               }
           });
         })
@@ -62,11 +63,11 @@ function questionsGo() {
             url: 'finish',
             method: 'post'
         });
-        alert("finished");
+   //     alert("finished");
         return;
       }
       renderQuestion(questions[i++]);
-      questionTimeout = setTimeout(nextQuestion, 20000);
+      questionTimeout = setTimeout(nextQuestion, 20000); //change this to 10 secs after testing
     }
 
     function renderQuestion(question) {

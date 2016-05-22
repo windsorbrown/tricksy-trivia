@@ -38,12 +38,14 @@
       </div>
 
       <div class="col-md-4 col-sm-6">
-        <h2>Public Games Open</h2>
-        <ul id="game-list">
-          <% @games.each do |game| %>
-            <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
-            <% end %>
-        </ul>
+        <% if @games %>
+          <h2>Public Games Open</h2>
+          <ul id="game-list">
+            <% @games.each do |game| %>
+              <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
+              <% end %>
+          </ul>
+        <% end %>
       </div>
       <div class="col-md-4 col-sm-6">
         <h2>Game History</h2>

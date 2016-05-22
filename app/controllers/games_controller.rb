@@ -54,9 +54,6 @@ class GamesController < ApplicationController
     close_game: {game: @game}
     
     render layout: 'page'
-
-
-
   end
 
   def finish
