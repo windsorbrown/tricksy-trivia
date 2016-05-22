@@ -1,9 +1,25 @@
+
+
 $(function(){
   if(window.location.pathname.indexOf("play_game") > -1){
+     
     questionsGo();
   }});
 
 function questionsGo() {
+  var the_url = window.location.pathname.match(/\d{9}/g);
+  var g_id = the_url[0];
+
+
+  App.cable.subscriptions.create({channel: "GameChannel", game_id: g_id }, {
+  received: (data) => {
+    var answers = $('#answers');
+    answers.append($("<li>").text(data.question.user.name));
+         console.log(data.question);
+       }
+
+    });
+
   $.ajax({
     method: 'get',
     url: 'play',
@@ -17,9 +33,11 @@ function questionsGo() {
     nextQuestion();
 
     function choiceButton(answerText) {
+     
       return $("<button>")
         .click(function () {
           var questionId = $('#game-questions').data('questionId');
+          
           $.ajax({
             url: 'user_answers',
             method: 'post',
@@ -29,8 +47,9 @@ function questionsGo() {
             },
             dataType: 'json',
               success: (res) => {
+                
                 alert(res.correct ? "Correct!" : "Wrong!");
-                nextQuestion();
+     //           nextQuestion();
               }
           });
         })
@@ -38,6 +57,7 @@ function questionsGo() {
     }
 
     function nextQuestion() {
+      $('#answers').empty();
       clearTimeout(questionTimeout);
       if (i == questions.length) {
         window.location.href = 'finish';
@@ -49,7 +69,7 @@ function questionsGo() {
         return;
       }
       renderQuestion(questions[i++]);
-      questionTimeout = setTimeout(nextQuestion, 10000);
+      questionTimeout = setTimeout(nextQuestion, 20000);
     }
 
     function renderQuestion(question) {
