@@ -1,5 +1,3 @@
-
-
 $(function(){
   if(window.location.pathname.indexOf("play_game") > -1){
      
@@ -33,8 +31,9 @@ function questionsGo() {
      
       return $("<button>")
         .click(function () {
+
+         
           var questionId = $('#game-questions').data('questionId');
-          
           $.ajax({
             url: 'user_answers',
             method: 'post',
@@ -44,7 +43,12 @@ function questionsGo() {
             },
             dataType: 'json',
               success: (res) => {
-             
+                if(res.correct){
+                  $(this).toggleClass('active-correct');
+                } else if (res.correct === false) {
+                  $(this).toggleClass('active-wrong');
+                }
+              $("button").attr('disabled', true);
                // add scores here. 
               //  alert(res.correct ? "Correct!" : "Wrong!");
               //  nextQuestion();
@@ -67,7 +71,7 @@ function questionsGo() {
         return;
       }
       renderQuestion(questions[i++]);
-      questionTimeout = setTimeout(nextQuestion, 20000); //change this to 10 secs after testing
+      questionTimeout = setTimeout(nextQuestion, 10000); //change this to 10 secs after testing
     }
 
     function renderQuestion(question) {
