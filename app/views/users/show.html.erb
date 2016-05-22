@@ -59,11 +59,11 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
     console.log(data);
     let gameList = $('#game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
-      let owner = data.open_game.owner
+      let owner = data.open_game.owner;
       let game = data.open_game.game;
       gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `http://localhost:3000/games/${game.id}`}));
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
-      let game = data.close_game.game
+      let game = data.close_game.game;
       gameList.find(`#game-${game.id}`).remove();
     }
   }
