@@ -49,7 +49,7 @@ class GamesController < ApplicationController
      ActionCable.server.broadcast "room_#{@game.id}",
     game_start: {game: @game, status:@game.status}
     
-   # render layout: 'page'
+    render layout: 'page'
 
 
 
