@@ -1,16 +1,19 @@
+
+
 $(function(){
   if(window.location.pathname.indexOf("play_game") > -1){
+     
     questionsGo();
   }});
 
 function questionsGo() {
   var the_url = window.location.pathname.match(/\d{9}/g);
   var g_id = the_url[0];
-
   App.cable.subscriptions.create({channel: "GameChannel", game_id: g_id }, {
     received: (data) => {
       var answers = $('#answers');
       answers.append($("<li>").text(data.question.user.name));
+        // console.log(data.question);
     }
   });
 
@@ -27,9 +30,11 @@ function questionsGo() {
     nextQuestion();
 
     function choiceButton(answerText) {
+     
       return $("<button>")
         .click(function () {
           var questionId = $('#game-questions').data('questionId');
+          
           $.ajax({
             url: 'user_answers',
             method: 'post',
@@ -39,6 +44,10 @@ function questionsGo() {
             },
             dataType: 'json',
               success: (res) => {
+             
+               // add scores here. 
+              //  alert(res.correct ? "Correct!" : "Wrong!");
+              //  nextQuestion();
               }
           });
         })

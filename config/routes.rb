@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :games do
     get '/finish', to: 'games#finish'
     resources :user_answers, only: [:create]
-    resources :players, only: [:index, :create, :destroy]
+    resources :players, only: [:index]
     get '/play', to: 'games#play'
     get '/play_game', to: 'games#play_game'
   end
