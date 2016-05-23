@@ -4,10 +4,9 @@ class UserAnswersController < ApplicationController
       user: current_user,
       game: Game.find(params['game_id']),
       answer: params['answer'],
-      question: Question.find(params['question_id'])
+      question: Question.find(params['question_id']),
+      score: 10
       )
-    #TODO: check who answered first 
-    
     render json: @answer
   end
 end

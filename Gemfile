@@ -25,7 +25,8 @@ gem 'jquery-rails'
 gem 'timers'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-#gem 'turbolinks', '~> 5.x'
+gem 'turbolinks', '~> 5.x'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
