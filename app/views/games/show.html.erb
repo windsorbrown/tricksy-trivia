@@ -4,25 +4,29 @@
     Welcome to <%=@game.owner.first_name %>'s game!
   </h1>
 
-  <section id="controls" class="col-md-6 col-md-offset-0">
-    <% if @game.owner == current_user %>
-      <%= button_to "Start the game!", game_play_game_path(@game), method: :get %>
-    <% else %>
-      <% if @player %>
-        <%= button_to "Leave this game!", game_player_path(@game, @player), method: :delete %>
+  <% if @game.pending? %>
+    <section id="controls" class="col-md-6 col-md-offset-0">
+      <% if @game.owner == current_user %>
+        <%= button_to "Start the game!", game_play_game_path(@game), method: :get %>
       <% else %>
-        <%= button_to "Join this game!", game_players_path(@game) %>
+        <% if @player %>
+          <%= button_to "Leave this game!", game_player_path(@game, @player), method: :delete %>
+        <% else %>
+          <%= button_to "Join this game!", game_players_path(@game) %>
+        <% end %>
       <% end %>
-    <% end %>
-  </section>
-  <section id="wait-list">
-    <h2>Currently Waiting Players:</h2>
-    <ul id="player-list">
-      <% @game.players.each do |player| %>
-        <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
-      <% end %>
-    </ul>
-  </section>
+    </section>
+    <section id="wait-list">
+      <h2>Currently Waiting Players:</h2>
+      <ul id="player-list">
+        <% @game.players.each do |player| %>
+          <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% else %>
+    <h2>This game is <%= @game.status %> and can no longer be joined.</h2>
+  <% end %>
 
 <script>
 var redirected = false;
