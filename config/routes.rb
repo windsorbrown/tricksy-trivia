@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   resources :users, only:[:show, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
+  resources :players, only: [:destroy]
 
   resources :games do
     get '/finish', to: 'games#finish'
     resources :user_answers, only: [:create]
-    resources :players, only: [:index]
+    resources :players, only: [:create, :destroy]
     get '/play', to: 'games#play'
     get '/play_game', to: 'games#play_game'
   end
