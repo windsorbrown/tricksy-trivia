@@ -10,6 +10,20 @@ class Game < ApplicationRecord
   after_save :notify_channels, if: :status_changed?
   after_create :notify_channels
 
+  attr_reader :question_generator
+
+  after_create do
+    puts "making generator for #{questions.count} questions"
+    @question_generator = questions.each
+  end
+
+  after_save do
+    puts "after save"
+    if status_changed? && active?
+      StartGameJob.set(wait: 2.seconds).perform_later(self)
+    end
+  end
+
   def winner
     return nil unless finished?
     players.find_by(winner: true)&.user

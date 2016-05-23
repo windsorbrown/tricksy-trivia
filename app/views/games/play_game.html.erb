@@ -18,26 +18,7 @@
     </div>
   </div>
 </div>
-<!--  -->
 
-
- <script>
-// App.cable.subscriptions.create({channel: "GameChannel", game_id: <%= @game.id %>}, {
-//   received: (data) => {
-//      var answers = $('#answers');
-//      // if (data.game_start) {
-//      //  //  game_room
-//      //   let game = data.game_start;
-//         answers.append($('<li>').text(data.game_start));
-//      // }
-//   //   else if (data.removed_user) {
-//   //     let user = data.removed_user;
-//   //     playerList.find(`#user-${user.id}`).remove();
-//   //   }
-//   // }
-//   console.log(data);
-//   console.log(data.game_start);
-//   }
-
-// })
+<script defer>
+beginGame(<%= @game.id %>)
 </script>
