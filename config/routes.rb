@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :questions, only: [:show]
   resources :players, only: [:destroy]
 
+  get '/new_single_player_game', to: 'games#new_single_player'
+
   resources :games do
     get '/finish', to: 'games#finish'
     resources :user_answers, only: [:create]

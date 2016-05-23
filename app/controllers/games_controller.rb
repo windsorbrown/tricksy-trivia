@@ -10,6 +10,18 @@ class GamesController < ApplicationController
     redirect_to @game
   end
 
+  def new_single_player
+    # TODO: remove this later, it's just to make testing faster
+    @game = Game.create(
+      owner: current_user,
+      questions: Question.limit(5).order("RANDOM()")
+    )
+    @game.players.new(user: current_user)
+    @game.save
+    @game.active!
+    redirect_to game_play_game_path(@game)
+  end
+
   def show
     @game = Game.find(params[:id])
     @player = @game.players.find_by(user: current_user)
@@ -38,9 +50,5 @@ class GamesController < ApplicationController
     @game.finished!
     Player.find_by(user: @game.owner, game: @game).update(winner: true)
     render inline: @game.status, layout: 'page'
-  end
-
-  def find_game
-    @game = Game.find params[:id]
   end
 end
