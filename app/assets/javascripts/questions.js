@@ -1,6 +1,6 @@
 $(function(){
   if(window.location.pathname.indexOf("play_game") > -1){
-     
+    window.history.forward(-1);
     questionsGo();
   }});
 

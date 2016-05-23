@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :games, through: :players
   has_many :user_answers
 
+  scope :created_between, lambda {|start_date, end_date| where("created_at >= ? AND created_at <= ?", start_date, end_date )}
+
   def create
   end
 
