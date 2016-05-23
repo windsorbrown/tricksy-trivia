@@ -2,9 +2,10 @@ function beginGame(game_id) {
   App.cable.subscriptions.create({channel: "GameChannel", game_id: game_id }, {
     received: (message) => {
       $.each({ 
-        answered:      addAnsweringPlayerToList,
+        someone_answered:      addAnsweringPlayerToList,
         time_up:       lockQuestion,
-        next_question: showQuestion
+        next_question: showQuestion,
+        game_over:     gameOver
       }, function (event_type, callback) {
         if (message.event_type === event_type) {
           callback(message.data);
@@ -14,6 +15,9 @@ function beginGame(game_id) {
   });
 }
 
+function gameOver() {
+  window.location.href = 'finish';
+}
 function addAnsweringPlayerToList(answer) {
   $('#answers').append($("<li>").text(answer.user_name));
 }
@@ -23,7 +27,6 @@ function lockQuestion() {
 }
 
 function showQuestion(question) {
-  console.log("would show question now");
   $('#answers').empty();
   var tds = [].concat(
       ['category', 'question'].map((key) =>

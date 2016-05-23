@@ -11,8 +11,12 @@ class Game < ApplicationRecord
   after_create :notify_channels
 
   after_save do
-    if status_changed? && active?
+    next unless status_changed?
+    if active?
       StartGameJob.set(wait: 2.seconds).perform_later(self)
+    elsif finished?
+      puts "broadcasting"
+      ActionCable.server.broadcast "game_#{id}", event_type: :game_over
     end
   end
 

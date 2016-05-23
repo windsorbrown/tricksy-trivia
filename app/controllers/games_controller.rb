@@ -37,7 +37,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @game.finished!
     Player.find_by(user: @game.owner, game: @game).update(winner: true)
-    render json: @game.status
+    render inline: @game.status, layout: 'page'
   end
 
   def find_game
