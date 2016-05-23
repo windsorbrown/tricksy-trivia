@@ -40,7 +40,7 @@
       <div class="col-md-4 col-sm-6">
         <% if @games %>
           <h2>Public Games Open</h2>
-          <ul id="game-list">
+          <ul class="game-list">
             <% @games.each do |game| %>
               <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
               <% end %>
@@ -50,9 +50,9 @@
       <div class="col-md-4 col-sm-6">
         <% if @topscores %>
           <h2>Top Players Today</h2>
-          <ul id="scoreboard">
+          <ul class="scoreboard">
              <% @topscores.each do |player| %> 
-              <li id="user-<%=player[0].id%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
+              <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
                <% end %> 
           </ul>
         <% end %>
@@ -66,9 +66,30 @@
 </section>
 
 <script>
+var updateBoard = function() {
+  var $scoreboard = $('ul.scoreboard'),
+    $userli = $scoreboard.children('li');
+
+  $userli.sort(function(a,b){
+    var an = a.getAttribute('data-score-field'),
+      bn = b.getAttribute('data-score-field');
+
+    if(an > bn) {
+      return -1;
+    }
+    if(an < bn) {
+      return 1;
+    }
+    return 0;
+  });
+
+  $userli.detach().appendTo($scoreboard);
+};
+updateBoard();
+
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {
   received: (data) => {
-    let gameList = $('#game-list');
+    let gameList = $('.game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
       let owner = data.open_game.owner;
       let game = data.open_game.game;
@@ -79,14 +100,19 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
     }
     if (data.update_scores){
       let message = data.update_scores;
-      if ($("#user-score-"+message.user.id).length){
+      if ($("#user-score-"+message.user.id).length) {
+        $("#user-"+message.user.id).attr("data-score-field", function(i, oldval){
+        return parseInt( oldval, 10) + parseInt(message.new_score)});
         $("#user-score-"+message.user.id).text(function(i, oldval){
-        return parseInt( oldval, 10) + parseInt(message.new_score);
-        });
+        return parseInt( oldval, 10) + parseInt(message.new_score)});
+        
+        updateBoard();
+
       } else{
         let message = data.update_scores;
-        let scoreboard = $("#scoreboard");
-        scoreboard.append($('<li>').html(`<span id="user-score-${message.user.id}">${message.new_score}</span> by ${message.user.name}!`));
+        let scoreboard = $(".scoreboard");
+        scoreboard.append($('<li>').html(`<span id="user-score-${message.user.id}">${message.new_score}</span> by ${message.user.name}!`).data('score-field',`${message.user.score}`));
+        updateBoard();
       }
     }
   }
