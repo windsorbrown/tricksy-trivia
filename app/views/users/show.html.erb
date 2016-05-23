@@ -1,59 +1,112 @@
-
-<!-- start title area -->
-<section id="titleArea">
+<div class="content-wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>My Dashboard</h2>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end title area -->
+    <section class="content-header">
+      <h1>Dashboard</h1>
+    </section>
+
 
 <!-- start process area -->
-<section id="processArea">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-sm-6">
-
-        <div class="btn-group btn-group-lg" role="group" aria-label="...">
-          <%= form_for Game.new do |f| %>             
-            <%= f.submit "New Game" %>
-            <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
-          <% end %>
-        </div><p></p>
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <form id = "game-form" method="get" action="/games/">
-              <div class="input-group">
-                <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit">Join Game</button>
-                </span>
-              </div><!-- /input-group -->
-            </form>
-          </div><!-- /.col-md-6 -->
-        </div>
+    <section class="content">
+      <div class="callout callout-danger">
+        <h4>Welcome <%= current_user.first_name %></h4>
+        <p>Start a New Public or Private Trivia Game, or join a game</p>
       </div>
+      <div class ="row">
+        <div class="col-md-6 col-sm-3 text-right">
+          <p> <%= form_for Game.new do |f| %>             
+              <%= f.submit "New Public Game" ,:class => 'btn btn btn-success'%>
+              <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
+            <% end %>
+            
+                <a class="btn btn btn-success" href="#">
+                <i class="fa fa-play"></i>  New Public Game</a>
 
-      <div class="col-md-4 col-sm-6">
-        <% if @games %>
-          <h2>Public Games Open</h2>
-          <ul id="game-list">
-            <% @games.each do |game| %>
-              <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
-              <% end %>
-          </ul>
-        <% end %>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <h2>Game History</h2>
-        <%= render @user.games.where(status: :finished) %>
+                <a class="btn btn btn-primary" href="#">
+                <i class="fa fa-play"></i>  New Private Game</a>
+                </p>
+            </div>
+          
+          
+            <div class="col-md-6 col-sm-3">
+              <form id = "game-form" method="get" action="/games/">
+                <div class="input-group">
+                  <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">Join Game</button>
+                    </span>
+                  </div><!-- /input-group -->
+                </form>
+              </div><!-- /.col-md-6 -->
+            </div>
+          </section>
+          <!-- /.box --> 
+        <section >
+           <div class="col-md-6">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Public Games</h3>
+
+          
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                  
+
+                     
+           
+           
+              <% @games.each do |game| %>
+               <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
+                <%= image_tag game.owner.image, class: "img-circle" %></a>
+                <span class="users-list-name"><%= game.owner.first_name %></span>
+                <% end %>
+                </li>
+                                 
+             
+                    </ul>
+                    <!-- /.users-list -->
+                  </div>
+                  <!-- /.box-body -->
+                 
+                  <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
+              </div>
+              <!-- /.col -->
+            
+            <!-- /.row -->
+            <div class="col-md-6">
+            <div class="box box-default">
+              <div class="box-header with-border">
+                <h3 class="box-title">Browser Usage</h3>
+                  <h2>Game History</h2>
+          <%= render @user.games.where(status: :finished) %>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="chart-responsive">
+                      <canvas id="pieChart" height="150"></canvas>
+                    </div>
+                    <!-- ./chart-responsive -->
+                  </div>
+                  <!-- /.col -->
+                
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.box-body -->           
+              </div>
+             </div>
+          </div>
+        </section>
       </div>
     </div>
-  </div>
-</section>
+
 
 <script>
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {

@@ -1,0 +1,65 @@
+@import "compass/css3";
+
+$timingLength: 10s;
+$faceSize:     150px;
+$faceMargin:   15px;
+$faceBorder:   15px;
+
+body {
+  background-image:
+    linear-gradient(90deg, rgba(#000,.4) 50%, rgba(#000,.6) 50%), 
+    linear-gradient(180deg, rgba(#000,.6) 50%, rgba(#000,.4) 50%);
+  background-size: 40px 40px, 40px 40px;
+}
+
+.timer {
+  width: ($faceSize + $faceMargin) * 2; height: ($faceSize + $faceMargin) * 2;
+  position: relative;
+  border: $faceMargin solid rgba(#fff,.6); border-radius: 50%;
+  background: radial-gradient(circle ($faceSize + $faceMargin) at 50%, rgba(#fff, .5), rgba(#000, .5));
+}
+
+.face {
+  position: absolute;
+  top: $faceMargin; bottom: $faceMargin; left: $faceMargin;
+  width: calc(50% - #{$faceMargin});
+  overflow: hidden;
+  
+  &:first-child {
+    left: 50%;
+    transform: rotate(180deg);
+  }
+
+  &::before {
+    display: block;
+    width: calc(100% - #{$faceBorder}); height: calc(100% - (#{$faceBorder} * 2 ));
+    border: solid rgba(#fff, .2);
+    border-width: $faceBorder 0 $faceBorder $faceBorder;
+    border-radius: $faceSize 0 0 $faceSize;
+    background: rgba(#fff,.5);
+    transform: rotate(-180deg);
+    transform-origin: 100% 50%;
+    @include animation( 
+      count $timingLength/2 linear 1 forwards, 
+      colorize $timingLength steps(1, end) 1 forwards 
+     );
+    content: '';
+  }
+  
+  & + .face::before {
+    @include animation-delay( $timingLength/2, 0s );
+  }
+}
+
+
+@include keyframes( count ) {
+  to { @include transform( rotate(0deg) ); }
+}
+
+
+@include keyframes( colorize ) {
+  0%   {  }
+  33%  { background: rgba(#fff, .3); }
+  66%  { background: rgba(#000, .3); }
+  90%, 100% { background: rgba(#000, .8); }
+}
