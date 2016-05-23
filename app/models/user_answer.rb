@@ -1,8 +1,9 @@
 class UserAnswer < ApplicationRecord
   belongs_to :user
-  belongs_to :game
-  belongs_to :question
-
+  belongs_to :game_question
+  has_one :game, through: :game_question
+  has_one :question, through: :game_question
+  
   before_create do
     self.correct = (question.answer.downcase.tr(' ','') == answer.downcase.tr(' ',''))
   end

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522194559) do
+ActiveRecord::Schema.define(version: 20160523225155) do
+
+  create_table "game_questions", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "question_id"
+    t.integer "status"
+    t.index ["game_id"], name: "index_game_questions_on_game_id"
+    t.index ["question_id"], name: "index_game_questions_on_question_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at",               null: false
@@ -19,13 +27,6 @@ ActiveRecord::Schema.define(version: 20160522194559) do
     t.integer  "owner_id"
     t.integer  "status",       default: 0
     t.integer  "keep_private", default: 0
-  end
-
-  create_table "games_questions", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "question_id"
-    t.index ["game_id"], name: "index_games_questions_on_game_id"
-    t.index ["question_id"], name: "index_games_questions_on_question_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -49,15 +50,13 @@ ActiveRecord::Schema.define(version: 20160522194559) do
 
   create_table "user_answers", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "game_id"
-    t.integer  "question_id"
     t.text     "answer"
     t.boolean  "correct"
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["game_id"], name: "index_user_answers_on_game_id"
-    t.index ["question_id"], name: "index_user_answers_on_question_id"
+    t.integer  "game_question_id"
+    t.index ["game_question_id"], name: "index_user_answers_on_game_question_id"
     t.index ["user_id"], name: "index_user_answers_on_user_id"
   end
 

@@ -3,7 +3,8 @@ class Game < ApplicationRecord
   has_many :players
   has_many :users, through: :players
   has_many :user_answers
-  has_and_belongs_to_many :questions
+  has_many :game_questions
+  has_many :questions, through: :game_questions
 
   enum status: [:pending, :active, :finished]
 

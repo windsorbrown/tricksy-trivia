@@ -6,7 +6,7 @@ class Player < ApplicationRecord
 
   after_create do
     ActionCable.server.broadcast "room_#{game.id}",
-      added_user: {name: user.name, id: user.id}
+      added_user: { name: user.name, id: user.id }
   end
 
   before_destroy do
