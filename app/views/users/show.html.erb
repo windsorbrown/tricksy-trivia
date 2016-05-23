@@ -82,9 +82,8 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
       if ($("#user-score-"+message.user.id).length){
         $("#user-score-"+message.user.id).text(function(i, oldval){
         return parseInt( oldval, 10) + parseInt(message.new_score);
-      });
+        });
       } else{
-        console.log('append new');
         let message = data.update_scores;
         let scoreboard = $("#scoreboard");
         scoreboard.append($('<li>').html(`<span id="user-score-${message.user.id}">${message.new_score}</span> by ${message.user.name}!`));
