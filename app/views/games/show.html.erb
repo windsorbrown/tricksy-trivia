@@ -1,39 +1,28 @@
 <div class="container">
-  Game ID: <%= @game.id %>
-<h1>
-  Welcome to <%=@game.owner.first_name %>'s game!
-</h1>
-<% if @game.owner.id == current_user.id %>
-  <div class="col-md-6 col-md-offset-0">
-    <%= form_tag(game_play_game_path(@game), method: "get") do %>
-      <%= submit_tag "Start the game!" %>
-    <% end %>
-  </div>
-<% end %>
-</div><br>
+  <h3>Game ID: <%= @game.id %></h3>
+  <h1>
+    Welcome to <%=@game.owner.first_name %>'s game!
+  </h1>
 
-<section id="waiting-players">
-  <h2>Currently Waiting Players:</h2>
-  <ul id="player-list">
-    <% @game.players.each do |player| %>
-      <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
-    <% end %>
-  </ul>
-  <% unless @game.owner == current_user %>
-    <!-- join/leave buttons -->
-    <div>
+  <section id="controls" class="col-md-6 col-md-offset-0">
+    <% if @game.owner == current_user %>
+      <%= button_to "Start the game!", game_play_game_path(@game), method: :get %>
+    <% else %>
       <% if @player %>
-        <%= form_tag(game_player_path(@game, @player), method: "delete") do %>
-          <%= submit_tag "Leave this game!" %>
-        <% end %>
+        <%= button_to "Leave this game!", game_player_path(@game, @player), method: :delete %>
       <% else %>
-        <%= form_tag(game_players_path(@game)) do %>
-          <%= submit_tag "Join this game!" %>
-        <% end %>
+        <%= button_to "Join this game!", game_players_path(@game) %>
       <% end %>
     <% end %>
-    </div>
-</section>
+  </section>
+  <section id="wait-list">
+    <h2>Currently Waiting Players:</h2>
+    <ul id="player-list">
+      <% @game.players.each do |player| %>
+        <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
+      <% end %>
+    </ul>
+  </section>
 
 <script>
 var redirected = false;
