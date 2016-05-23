@@ -5,15 +5,14 @@ class Game < ApplicationRecord
   has_many :user_answers
   has_and_belongs_to_many :questions
 
-
   enum status: [:pending, :active, :finished]
 
-  scope :finished, -> { where(status: finished) }
   def add_player(user)
     if players.find_by(user_id: user.id)
       return false
-     else  
+     else
       players << Player.new(user: user, game: self)
+      save
     end
   end
 
@@ -21,5 +20,4 @@ class Game < ApplicationRecord
     return nil unless finished?
     players.find_by(winner: true)&.user
   end
-
 end

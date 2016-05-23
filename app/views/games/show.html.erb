@@ -1,39 +1,39 @@
 <div class="container">
   Game ID: <%= @game.id %>
-  <h1>
-    Welcome to <%=@game.owner.first_name %>'s game!
-  </h1>
-  <% if @game.owner.id == @user.id %>
+<h1>
+  Welcome to <%=@game.owner.first_name %>'s game!
+</h1>
+<% if @game.owner.id == current_user.id %>
   <div class="col-md-6 col-md-offset-0">
     <%= form_tag(game_play_game_path(@game), method: "get") do %>
-    <%= submit_tag "Start the game!" %>
+      <%= submit_tag "Start the game!" %>
     <% end %>
   </div>
-  <% end %>
+<% end %>
 </div><br>
 
-<div>
-  Currently Waiting Players:
+<section id="waiting-players">
+  <h2>Currently Waiting Players:</h2>
   <ul id="player-list">
     <% @game.players.each do |player| %>
       <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
     <% end %>
   </ul>
-   
-    <% if @game.users.include?(@user) && @game.owner != @user %>
-      <%= form_tag(game_path(@game), method: "patch") do %>
-      <%= submit_tag "Leave this game!" %>
+  <% unless @game.owner == current_user %>
+    <!-- join/leave buttons -->
+    <div>
+      <% if @player %>
+        <%= form_tag(game_player_path(@game, @player), method: "delete") do %>
+          <%= submit_tag "Leave this game!" %>
+        <% end %>
+      <% else %>
+        <%= form_tag(game_players_path(@game)) do %>
+          <%= submit_tag "Join this game!" %>
+        <% end %>
       <% end %>
-      <% end %>
-    </div>
-
-    <% unless @game.owner == @user || @game.users.include?(@user) %>
-      <%= form_tag(edit_game_path(@game), method: "get") do %>
-                        <%= submit_tag "Join this game!" %>
-                        <% end %>
     <% end %>
-  </div>
-</div>
+    </div>
+</section>
 
 <script>
 var redirected = false;
@@ -50,10 +50,10 @@ App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>
     }
     else if (data.game_start){
       let game = data.game_start.game
-      if (redirected === false){
-        window.location.replace("http://localhost:3000/games/"+game.id+"/play_game")
-       redirected = true;
-     }
+        if (redirected === false){
+          window.location.replace("http://localhost:3000/games/"+game.id+"/play_game")
+            redirected = true;
+        }
 
     }
   }
