@@ -4,10 +4,20 @@ class UsersController < ApplicationController
   def show
     @user = @current_user
     @games = Game.where(status: 'pending', keep_private: 0)
+    @win_loss = ActiveRecord::Base.connection.execute %{
+      SELECT (
+        CASE winner WHEN 't' THEN 'Wins' ELSE 'Losses' END
+        ) AS label, count(id) AS Total
+      FROM players WHERE user_id = #{@current_user.id} and winner is not null
+      GROUP BY winner
+      ORDER BY count(id) desc
+    }
   end
 
   def create
 
   end
+
+
 
 end
