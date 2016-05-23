@@ -19,4 +19,6 @@
 //= require scrolld.min.js
 //= require jquery.flexslider-min
 //= require retina-1.1.0.min
+//= require highcharts
+//= require chartkick
 //= require scripts

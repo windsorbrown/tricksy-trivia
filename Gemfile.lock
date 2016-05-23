@@ -44,6 +44,7 @@ GEM
     buftok (0.2.0)
     builder (3.2.2)
     byebug (9.0.0)
+    chartkick (1.5.2)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     domain_name (0.5.20160310)
@@ -220,6 +221,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
+  chartkick
   figaro
   font-awesome-rails
   jbuilder (~> 2.0)
