@@ -7,18 +7,10 @@ class Game < ApplicationRecord
 
   enum status: [:pending, :active, :finished]
 
-  after_save :notify_channels, if: :status_changed?
+  after_update :notify_channels, if: :status_changed?
   after_create :notify_channels
 
-  attr_reader :question_generator
-
-  after_create do
-    puts "making generator for #{questions.count} questions"
-    @question_generator = questions.each
-  end
-
   after_save do
-    puts "after save"
     if status_changed? && active?
       StartGameJob.set(wait: 2.seconds).perform_later(self)
     end
@@ -33,13 +25,12 @@ class Game < ApplicationRecord
     case status.to_sym
     when :pending
       ActionCable.server.broadcast "overview_channel",
-        open_game: {game: self, owner: owner}
+        open_game: { game: self, owner: owner }
     when :active
-      ActionCable.server.broadcast "room_#{id}", 
+      ActionCable.server.broadcast "room_#{id}",
         game_start: { game: self, status: status }
       ActionCable.server.broadcast "overview_channel",
         close_game: { game: self }
     end
   end
-
 end

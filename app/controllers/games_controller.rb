@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     )
     @game.players.new(user: current_user)
     @game.save
-    redirect_to @game, layout: 'page'
+    redirect_to @game
   end
 
   def show
