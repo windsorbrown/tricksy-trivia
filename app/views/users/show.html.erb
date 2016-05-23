@@ -49,12 +49,11 @@
       </div>
       <div class="col-md-4 col-sm-6">
         <% if @topscores %>
-          <% byebug %>
           <h2>Top Players Today</h2>
           <ul id="scoreboard">
-            <!-- <% @topscores.each do |player| %> -->
-              <!-- <li><%=player[0].name%> -- <%=player[0]%></li> -->
-              <!-- <% end %> -->
+             <% @topscores.each do |player| %> 
+              <li id="user-<%=player[0].id%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
+               <% end %> 
           </ul>
         <% end %>
       </div>
@@ -69,7 +68,6 @@
 <script>
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {
   received: (data) => {
-    console.log(data);
     let gameList = $('#game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
       let owner = data.open_game.owner;
@@ -78,6 +76,19 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
       let game = data.close_game.game;
       gameList.find(`#game-${game.id}`).remove();
+    }
+    if (data.update_scores){
+      let message = data.update_scores;
+      if ($("#user-score-"+message.user.id).length){
+        $("#user-score-"+message.user.id).text(function(i, oldval){
+        return parseInt( oldval, 10) + parseInt(message.new_score);
+      });
+      } else{
+        console.log('append new');
+        let message = data.update_scores;
+        let scoreboard = $("#scoreboard");
+        scoreboard.append($('<li>').html(`<span id="user-score-${message.user.id}">${message.new_score}</span> by ${message.user.name}!`));
+      }
     }
   }
 })
