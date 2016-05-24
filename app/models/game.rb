@@ -23,7 +23,10 @@ class Game < ApplicationRecord
 
   def winner
     return nil unless finished?
-    players.find_by(winner: true)&.user
+    winner = players.find_by(winner: true)&.user
+    ActionCable.server.broadcast "overview_channel",
+    game_score: {game: @game, winner: winner}
+    winner
   end
 
   def notify_channels

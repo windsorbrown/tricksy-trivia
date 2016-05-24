@@ -5,10 +5,9 @@ class UserAnswersController < ApplicationController
     @answer = UserAnswer.create(
       game_question: @game_question,
       answer: params['answer'],
-      question: Question.find(params['question_id'])
+      question: Question.find(params['question_id']),
+      score: 10
       )
-    #TODO: check who answered first 
-    
     render json: @answer
   end
 end
