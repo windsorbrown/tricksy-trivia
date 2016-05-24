@@ -21,7 +21,7 @@ class UserAnswer < ApplicationRecord
       update_scores: { user: user, new_score: score }
     ActionCable.server.broadcast "game_#{game.id}",
       {event_type: :someone_answered, 
-       data: {question_id: question_id, 
+       data: {question_id: question.id, 
               user_name: user.name, 
               correct: correct}}
   end

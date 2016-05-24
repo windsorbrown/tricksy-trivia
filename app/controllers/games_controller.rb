@@ -12,12 +12,11 @@ class GamesController < ApplicationController
 
   def new_single_player
     # TODO: remove this later, it's just to make testing faster
-    @game = Game.create(
+    @game = Game.new(
       owner: current_user,
       questions: Question.limit(5).order("RANDOM()")
     )
     @game.players.new(user: current_user)
-    @game.save
     @game.active!
     redirect_to game_play_game_path(@game)
   end
