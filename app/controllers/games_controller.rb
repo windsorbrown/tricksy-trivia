@@ -25,7 +25,7 @@ class GamesController < ApplicationController
   def play_game
     @game = Game.find(params[:game_id])
     if @game.active?
-      render and return
+      render layout: 'page' and return
     elsif @game.finished?
       fail "Tried to start a finished game"
     end
@@ -36,7 +36,9 @@ class GamesController < ApplicationController
   def finish
     @game = Game.find(params[:game_id])
     @game.finished!
-    Player.find_by(user: @game.owner, game: @game).update(winner: true)
+    if @game.owner == current_user
+      Player.find_by(user: current_user, game: @game).update(winner: true)
+    end
     render inline: @game.status, layout: 'page'
   end
 
