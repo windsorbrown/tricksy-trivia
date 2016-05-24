@@ -16,7 +16,7 @@ function beginGame(game_id) {
 }
 
 function gameOver() {
-  location += '/finish';
+  location.reload();
 }
 function addAnsweringPlayerToList(answer) {
   $('#answers').append($("<li>").text(answer.user_name));

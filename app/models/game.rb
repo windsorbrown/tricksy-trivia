@@ -35,7 +35,9 @@ class Game < ApplicationRecord
     case status.to_sym
     when :pending
       ActionCable.server.broadcast "overview_channel",
-        open_game: { game: self, owner: owner }
+        open_game: { game: self, 
+                     owner: owner,
+                     owner_name: owner.first_name }
     when :active
       ActionCable.server.broadcast "room_#{id}",
         game_start: { game: self, status: status }
@@ -51,15 +53,14 @@ class Game < ApplicationRecord
                     SELECT players.id AS player_id, SUM(user_answers.score) AS score FROM players
                     JOIN user_answers
                       ON players.user_id = user_answers.user_id
-                    JOIN games
-                      ON games.id = players.game_id
+                    WHERE players.game_id = #{id}
                     GROUP BY players.id
                     ORDER BY score
                     LIMIT 1;
                    ").first['player_id']
     winner = Player.find(winner_id)
     winner.update(winner: true)
-    ActionCable.server.broadcast "overview_channel",
-      game_score: {game: @game, winner: winner}
+    #ActionCable.server.broadcast "overview_channel",
+    #  game_score: {game: @game, winner: winner}
   end
 end
