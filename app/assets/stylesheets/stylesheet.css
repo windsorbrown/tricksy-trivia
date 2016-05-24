@@ -166,6 +166,62 @@ background-size: contain; }*/
 }
 
 
+
+.triangle-obtuse {
+  position:relative;
+  padding:15px;
+  margin:1em 0 3em;
+  color:#fff;
+  background:#c81e2b;
+  /* css3 */
+  background:-webkit-gradient(linear, 0 0, 0 100%, from(#f04349), to(#c81e2b));
+  background:-moz-linear-gradient(#f04349, #c81e2b);
+  background:-o-linear-gradient(#f04349, #c81e2b);
+  background:linear-gradient(#f04349, #c81e2b);
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+/* Variant : for top positioned triangle
+------------------------------------------ */
+
+.triangle-obtuse.top {
+  background:-webkit-gradient(linear, 0 0, 0 100%, from(#c81e2b), to(#f04349));
+  background:-moz-linear-gradient(#c81e2b, #f04349);
+  background:-o-linear-gradient(#c81e2b, #f04349);
+  background:linear-gradient(#c81e2b, #f04349);
+}
+
+.triangle-border {
+  position:relative;
+  padding:15px;
+  margin:1em 0 3em;
+  border:5px solid #5a8f00;
+  color:#333;
+  background:#fff;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+.triangle-border.top:before {
+  top:-20px; /* value = - border-top-width - border-bottom-width */
+  bottom:auto;
+  left:auto;
+  right:40px; /* controls horizontal position */
+  border-width:0 20px 20px;
+}
+
+/* creates the smaller  triangle */
+.triangle-border.top:after {
+  top:-13px; /* value = - border-top-width - border-bottom-width */
+  bottom:auto;
+  left:auto;
+  right:47px; /* value = (:before right) + (:before border-right) - (:after border-right) */
+  border-width:0 13px 13px;
+}
 /*
  * Content Wrapper - contains the main content
  * ```.right-side has been deprecated as of v2.0.0 in favor of .content-wrapper  ```
