@@ -69,11 +69,11 @@
 <script>
 var updateBoard = function() {
   var $scoreboard = $('ul.scoreboard'),
-    var $userli = $scoreboard.children('li');
+      $userli = $scoreboard.children('li');
 
   $userli.sort(function(a,b){
     var an = a.getAttribute('data-score-field'),
-      var bn = b.getAttribute('data-score-field');
+        bn = b.getAttribute('data-score-field');
 
     if(an > bn) {
       return -1;
