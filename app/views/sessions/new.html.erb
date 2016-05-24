@@ -1,35 +1,30 @@
-   <!-- start title area -->
-    <section id="titleArea">
-      <div class="container">
-       <div class="row">
-        <div class="col-md-12">
-          <h2>Please login to continue</h2>
-        </div>
-       </div>
-      </div>
+<div class="content-wrapper">
+  <div class="container">
+    <section class="content-header">
+      <h1>Dashboard</h1>
     </section>
-    <!-- end title area -->
   
-    <!-- start process area -->
-    <section id="processArea">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-6">
-                   
-            <%= form_tag session_path do %>
-              <div>
-                <%= label_tag :uid %><br/>
-                <%= text_field_tag :uid %>
-              </div>
-
-              <div><%= submit_tag "Log In" %></div>
-            <% end %>
-            
-
-             <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
-            <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>                       
-          </div>
-        </div>
+    <section class="content">
+      <div class="callout callout-danger">
+        <h4>Welcome </h4>
+        <p>Please login to continue</p>
       </div>
-    </section>
+      <div class="row">
+        <div class="col-md-12 col-sm-6">      
+          <%= form_tag session_path do %>
+          <div>
+            <%= label_tag :uid %><br/>
+            <%= text_field_tag :uid %>
+          </div>
+          <div><%= submit_tag "Log In" %></div>
+          <% end %>
+          <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
+          <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>                       
+      </div>
+    </div>
+  </section>
+  </div>
+</div>
+
+
     

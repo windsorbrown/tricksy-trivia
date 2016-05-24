@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'user/dash', to: 'users#show' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller
    #get 'games/:id/players', to: 'games#players'
 
+  get 'static/page', to: 'pages#static'
+
   resources :users, only:[:show, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :questions, only: [:show]
