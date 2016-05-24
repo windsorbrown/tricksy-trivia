@@ -59,7 +59,7 @@
       </div>
       <div class="col-md-4 col-sm-6">
         <h2>Game History</h2>
-        <%= render @user.games.where(status: :finished) %>
+        <%= render @user.games.where(status: :finished).limit(5) %>
         <%= pie_chart (@win_loss), width: "400px", height: "400px"%>
       </div>
     </div>
@@ -69,17 +69,17 @@
 <script>
 var updateBoard = function() {
   var $scoreboard = $('ul.scoreboard'),
-    $userli = $scoreboard.children('li');
+    var $userli = $scoreboard.children('li');
 
   $userli.sort(function(a,b){
     var an = a.getAttribute('data-score-field'),
-      bn = b.getAttribute('data-score-field');
+      var bn = b.getAttribute('data-score-field');
 
     if(an > bn) {
-      return 1;
+      return -1;
     }
     if(an < bn) {
-      return -1;
+      return 1;
     }
     return 0;
   });
