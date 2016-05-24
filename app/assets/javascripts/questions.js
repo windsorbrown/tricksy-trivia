@@ -41,6 +41,7 @@ function showQuestion(question) {
   function choiceButton(answerText) {
     return $("<button>")
       .click(function () {
+        $("#game-questions button").attr('disabled', true)
         $.ajax({
           url: 'user_answers/',
           method: 'post',
@@ -55,7 +56,6 @@ function showQuestion(question) {
             } else if (res.correct === false) {
               $(this).toggleClass('active-wrong');
             }
-            $("button").attr('disabled', true);
           }
         });
       })
