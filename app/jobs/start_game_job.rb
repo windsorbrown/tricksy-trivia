@@ -6,10 +6,10 @@ class StartGameJob < ApplicationJob
     ActionCable.server.broadcast "game_#{game.id}",
       { event_type: :next_question, data: question.as_json }
 
-    if question_index < game.questions.count
+    if question_index + 1 < game.questions.count
       StartGameJob.set(wait: 2.seconds).perform_later(game, question_index + 1)
     else
-      Game.finished!
+      game.finished!
     end
   end
 
