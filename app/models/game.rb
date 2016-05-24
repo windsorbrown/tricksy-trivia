@@ -59,7 +59,6 @@ class Game < ApplicationRecord
                    ").first['player_id']
     winner = Player.find(winner_id)
     winner.update(winner: true)
-    debugger
     ActionCable.server.broadcast "overview_channel",
       game_score: {game: @game, winner: winner}
   end
