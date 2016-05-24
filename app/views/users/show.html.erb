@@ -35,7 +35,7 @@
               <h3 class="box-title">Public Games</h3>
             </div>
             <div class="box-body no-padding">
-              <ul class="users-list clearfix">
+              <ul class="users-list clearfix" id="game-list">
                 <% @games.each do |game| %>
                 <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
                   <%= image_tag game.owner.image, class: "img-circle" %></a>
@@ -105,11 +105,14 @@ updateBoard();
 
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {
   received: (data) => {
-    let gameList = $('.game-list');
+    let gameList = $('#game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
-      let owner = data.open_game.owner;
-      let game = data.open_game.game;
-      gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `http://localhost:3000/games/${game.id}`}));
+      game_id = data.open_game.game.id;
+      owner_name = data.open_game.owner_name;
+      avatar_url = data.open_game.owner.image;
+      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'> 
+          <image src=${avatar_url} class="img-circle"></a> 
+          <span class='users-list-name'>${ owner_name } </span> </li>`);
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
       let game = data.close_game.game;
       gameList.find(`#game-${game.id}`).remove();
