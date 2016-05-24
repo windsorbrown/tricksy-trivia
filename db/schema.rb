@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160523225155) do
   create_table "game_questions", force: :cascade do |t|
     t.integer "game_id"
     t.integer "question_id"
-    t.integer "status"
+    t.integer "status",      default: 0
     t.index ["game_id"], name: "index_game_questions_on_game_id"
     t.index ["question_id"], name: "index_game_questions_on_question_id"
   end

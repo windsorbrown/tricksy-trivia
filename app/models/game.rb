@@ -10,15 +10,18 @@ class Game < ApplicationRecord
 
   after_update :notify_channels, if: :status_changed?
   after_create :notify_channels
+  after_update :start_game, if: [:status_changed?, :active?]
 
-  after_save do
-    next unless status_changed?
-    if active?
-      StartGameJob.set(wait: 2.seconds).perform_later(self)
-    elsif finished?
-      puts "broadcasting"
-      ActionCable.server.broadcast "game_#{id}", event_type: :game_over
-    end
+  def next_question
+    game_questions.find_by(status: 'pending')
+  end
+
+  def active_question
+    game_questions.find_by(status: 'active')
+  end
+
+  def start_game
+    NextQuestionJob.set(wait: 2.seconds).perform_later(self)
   end
 
   def winner
@@ -39,6 +42,8 @@ class Game < ApplicationRecord
         game_start: { game: self, status: status }
       ActionCable.server.broadcast "overview_channel",
         close_game: { game: self }
+    when :finished
+      ActionCable.server.broadcast "game_#{id}", event_type: :game_over
     end
   end
 end
