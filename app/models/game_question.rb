@@ -3,13 +3,14 @@ class GameQuestion < ApplicationRecord
   belongs_to :question
   has_many :user_answers
 
-  after_save :notify_start, if: [:status_changed?, :active?]
+  before_save :notify_start, if: [:status_changed?, :active?]
   after_save :notify_end, if: [:status_changed?, :finished?]
   enum status: [:pending, :active, :finished]
   
   def advance_now
     NextQuestionJob.perform_now(game, self)
   end
+
   private
 
   def notify_end
@@ -21,7 +22,10 @@ class GameQuestion < ApplicationRecord
     ActionCable.server.broadcast "game_#{game.id}",
       { event_type: :next_question, data: question.as_json }
 
-    # this is where the question time is set
-    NextQuestionJob.set(wait: 10.seconds).perform_later(game, self)
+    self.start_time = DateTime.now
+
+    NextQuestionJob
+    .set(wait: Rails.configuration.question_time)
+    .perform_later(game, self)
   end
 end

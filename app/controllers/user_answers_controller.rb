@@ -7,7 +7,6 @@ class UserAnswersController < ApplicationController
       game_question: @game_question,
       answer: params['answer'],
       question: Question.find(params['question_id']),
-      score: 10
       )
     render json: @answer
   end
