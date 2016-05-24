@@ -28,12 +28,7 @@
   <% else %>
     <h2>This game is <%= @game.status %> and can no longer be joined.</h2>
   <% end %>
-   <p id="demo" style="height: 150px;"></p>
-
-  <blockquote class="example-twitter" cite="https://twitter.com/necolas/status/9880187933">
-        <p>Takes me longer to write up blog posts on experiments or projects than to create them in the first place.</p>
-      </blockquote>
-
+  
 </div>
 <script>
 var redirected = false;
@@ -59,20 +54,7 @@ App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>
   }
 })
 
-$(function(){
-  
-    $('.boom').hide();
-    $('#demo').pietimer({
-      seconds: 10,
-      color: 'rgba(215, 44, 90, 0.9)',
-      height: 100,
-      width: 100,
-          is_reversed: true
-    });
-    
-      $('#demo').pietimer('start');
 
-  });
 
 
 </script>
