@@ -50,6 +50,71 @@ body {
 .layout-boxed {
   background: url('../img/boxed-bg.jpg') repeat fixed;
 }
+
+.rounded {
+  border-radius: 10px;
+  background: #e4e7e7; 
+  width: 20%;
+  min-height:200px;
+  padding: 5px;
+  margin: 25px;
+
+}
+
+.example-twitter {
+  position:relative;
+  padding:15px;
+  margin:100px 0 0.5em;
+  color:#333;
+  background:#eee;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+.example-twitter p {font-size:28px; line-height:1.25em;}
+
+/* this isn't necessary, just saves me having to edit the HTML of the demo */
+.example-twitter:before {
+  position:absolute;
+  top:-60px;
+  left:0;
+  width:155px;
+  height:36px;
+  /* reduce the damage in FF3.0 */
+  display:block;
+}
+
+/* creates the triangle */
+.example-twitter:after {
+  content:"";
+  position:absolute;
+  top:-30px;
+  left:50px;
+  border:15px solid transparent;
+  border-bottom-color:#eee;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* display of quote author (alternatively use a class on the element following the blockquote) */
+.example-twitter + p {padding-left:15px; font:14px Arial, sans-serif;}
+
+
+
+.btn-circle.btn-xl {
+  width: 40px;
+  height: 40px;
+  padding: 8px 13px;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+
+
 /*
  * Content Wrapper - contains the main content
  * ```.right-side has been deprecated as of v2.0.0 in favor of .content-wrapper  ```

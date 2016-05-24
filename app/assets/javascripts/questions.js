@@ -2,7 +2,7 @@ function beginGame(game_id) {
   App.cable.subscriptions.create({channel: "GameChannel", game_id: game_id }, {
     received: (message) => {
       $.each({ 
-        answered:      addAnsweringPlayerToList,
+        someone_answered:      addAnsweringPlayerToList,
         time_up:       lockQuestion,
         next_question: showQuestion
       }, function (event_type, callback) {
