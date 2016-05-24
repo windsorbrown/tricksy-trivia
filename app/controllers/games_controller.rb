@@ -41,8 +41,4 @@ class GamesController < ApplicationController
     end
     render inline: @game.status, layout: 'page'
   end
-
-  def find_game
-    @game = Game.find params[:id]
-  end
 end
