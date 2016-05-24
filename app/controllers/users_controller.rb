@@ -23,10 +23,4 @@ class UsersController < ApplicationController
 
   end
 
-<<<<<<< HEAD
 end
-=======
-
-
-end
->>>>>>> chart
