@@ -3,7 +3,6 @@
   <h1>
     Welcome to <%=@game.owner.first_name %>'s game!
   </h1>
-
   <% if @game.pending? %>
     <section id="controls" class="col-md-6 col-md-offset-0">
       <% if @game.owner == current_user %>
@@ -24,32 +23,24 @@
         <% end %>
       </ul>
     </section>
+    <script defer>subscribeRoomChannel(<%= @game.id %>)</script>
+  <% elsif @game.active? %>
+    <% if @player %>
+      <div class="row">
+        <div class="col-md-8 col-sm-6"> 
+          <table id = "game-questions"></table>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <h1>Players progress</h1>
+          <ul id ="answers"></ul>
+        </div>
+      </div>
+      <script defer>beginGame(<%= @game.id %>)</script>
+    <% else %>
+      <h2>Game started without you.<h2/>
+    <% end %>
   <% else %>
-    <h2>This game is <%= @game.status %> and can no longer be joined.</h2>
+    <h2>Game is over.</h2>
   <% end %>
-
-<script>
-var redirected = false;
-App.cable.subscriptions.create({channel: "RoomChannel", game_id: <%= @game.id %>}, {
-  received: (data) => {
-    let playerList = $('#player-list');
-    if (data.added_user) {
-      let user = data.added_user;
-      playerList.append($('<li>').text(user.name).attr("id", `user-${user.id}`));
-    }
-    else if (data.removed_user) {
-      let user = data.removed_user;
-      playerList.find(`#user-${user.id}`).remove();
-    }
-    else if (data.game_start){
-      let game = data.game_start.game
-      if (redirected === false){
-        window.location.replace("http://localhost:3000/games/"+game.id+"/play_game")
-       redirected = true;
-     }
-
-    }
-  }
-})
-
-</script>
+</div>
