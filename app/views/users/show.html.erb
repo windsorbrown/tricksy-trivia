@@ -10,78 +10,75 @@
       </div>
       <div class ="row">
         <div class="col-md-6 col-sm-3 text-right">
-          <p> <%= form_for Game.new do |f| %>             
+         <%= form_for Game.new do |f| %>             
               <%= f.submit "New Public Game" ,:class => 'btn btn btn-success'%>
               <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
             <% end %>
-             <a class="btn btn btn-success" href="#">
-                <i class="fa fa-play"></i>  New Public Game</a>
-              <a class="btn btn btn-primary" href="#">
-                <i class="fa fa-play"></i>  New Private Game</a>
-                </p>
-            </div>
-            <div class="col-md-6 col-sm-3">
-              <form id = "game-form" method="get" action="/games/">
-                <div class="input-group">
-                  <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit">Join Game</button>
-                    </span>
-                  </div><!-- /input-group -->
-                </form>
-              </div><!-- /.col-md-6 -->
-           </div>
-           <div class ="row">
-            <div class="col-md-6">
-              <div class="box box-danger">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Public Games</h3>
-                  </div>
-                  <div class="box-body no-padding">
-                    <ul class="users-list clearfix">
-                    <% @games.each do |game| %>
-                      <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
-                        <%= image_tag game.owner.image, class: "img-circle" %></a>
-                        <span class="users-list-name"><%= game.owner.first_name %></span>
-                        <% end %>
-                       </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            <div class="col-md-6">
-            <div class="box box-default">
-              <div class="box-header with-border">
-                <h3 class="box-title">Game History</h3>
-              </div>
-              <div class="box-body">
-                 <div class="chart-responsive">
-                    <%= render @user.games.where(status: :finished) %>
-                      <canvas id="pieChart" height="150"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
         </div>
-
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-             <div class="box box-danger">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Top Players Today</h3>
-                  </div>
-        <% if @topscores %>
-        
-          <ul class="scoreboard">
-             <% @topscores.each do |player| %> 
-              <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
-               <% end %> 
-          </ul>
-        <% end %>
+        <p></p>
+        <div class="col-md-6 col-sm-3">
+          <form id = "game-form" method="get" action="/games/">
+            <div class="input-group">
+              <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Join Game</button>
+                </span>
+            </div><!-- /input-group -->
+          </form>
+        </div><!-- /.col-md-6 -->
+      </div>
+      <p></p>
+      <div class ="row">
+        <div class="col-md-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Public Games</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="users-list clearfix">
+                <% @games.each do |game| %>
+                <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
+                  <%= image_tag game.owner.image, class: "img-circle" %></a>
+                  <span class="users-list-name"><%= game.owner.first_name %></span>
+                <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Game History</h3>
+            </div>
+            <div class="box-body">
+              <div class="chart-responsive">
+                <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Top Players Today</h3>
+                </div>
+           <% if @topscores %>
+            <ul class="scoreboard">
+             <% @topscores.each do |player| %> 
+              <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
+              <% end %> 
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
-        </section>
 
 
 <script>
@@ -94,10 +91,10 @@ var updateBoard = function() {
       bn = b.getAttribute('data-score-field');
 
     if(an > bn) {
-      return -1;
+      return 1;
     }
     if(an < bn) {
-      return 1;
+      return -1;
     }
     return 0;
   });

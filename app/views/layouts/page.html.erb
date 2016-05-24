@@ -2,37 +2,22 @@
 <html>
   <head>
     <title>TricksyHobbit</title>
+    
     <%= csrf_meta_tags %>
-   <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body role="document">
-    <%= render 'layouts/navbar' %>
-    <main>
-      <section id="titleArea">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-sm-6">
-              <h2><%= params[:controller].capitalize %></h2>
-            </div>
-             <div class="col-md-4 col-sm-6">
-            </div>
-          </div>
+  
+  <body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+  <!-- Full Width Column -->
+          <%= render 'layouts/navbar' %>
+             <%= yield %>
+          <%= render 'layouts/footer' %>
         </div>
-      </section>
-      <section id="processArea">
-        <div class="container">
-          <div class="row">
-           <div class="col-md-12 col-sm-6">
-            <%= yield %>
-            </div>
-       
-          </div>
-        </div>
-      </section>
-    </main>
-    <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>

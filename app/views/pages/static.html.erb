@@ -1,0 +1,64 @@
+<div class="content-wrapper">
+  <div class="container">
+    <section class="content-header">
+      <h1>Dashboard</h1>
+    </section>
+    <section class="content">
+      <div class="callout callout-warning">
+        <h4>Welcome <%= current_user.first_name %></h4>
+        <p>Start a New Public or Private Trivia Game, or join a game</p>
+      </div>
+      <div class ="row">
+        <div class="col-md-5 col-sm-2">
+        <blockquote class="example-twitter">
+        Takes me longer to write up blog posts on experiments or projects than to create them in the first place.
+      </blockquote>
+       </div>
+       <div class="col-md-2 col-sm-2"> </div>
+    
+     <div class="col-md-5 col-sm-2">
+       <blockquote class="example-twitter">
+        Takes me longer to write up blog posts on experiments or projects than to create them in the first place.
+      </blockquote>
+       </div>
+    </div>
+     <div class ="row">
+        <div class="col-md-5 col-sm-2">
+        <blockquote class="example-twitter">
+        Takes me longer to write up blog posts on experiments or projects than to create them in the first place.
+      </blockquote>
+       </div>
+       <div class="col-md-2 col-sm-2"> </div>
+    
+     <div class="col-md-5 col-sm-2">
+       <blockquote class="example-twitter">
+        Takes me longer to write up blog posts on experiments or projects than to create them in the first place.
+      </blockquote>
+       </div>
+    </div>
+  </section>
+  
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  
+
+$(function(){
+  
+    $('.boom').hide();
+    $('#demo').pietimer({
+      seconds: 10,
+      color: 'rgba(215, 44, 90, 0.9)',
+      height: 100,
+      width: 100,
+          is_reversed: true
+    });
+    
+      $('#demo').pietimer('start');
+
+  });
+
+
+</script>

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+
   def index
   end
 
@@ -9,4 +9,7 @@ class PagesController < ApplicationController
   def join_game
   end
 
+  def static
+  end
+  
 end
