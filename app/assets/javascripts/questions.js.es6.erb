@@ -18,7 +18,7 @@ function beginGame(game_id) {
 }
 
 function gameOver() {
-  location.reload();
+  window.location.href += "/finish";
 }
 function addAnsweringPlayerToList(answer) {
   var $div = $('#player-notification');
