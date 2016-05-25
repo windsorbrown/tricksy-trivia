@@ -19,18 +19,35 @@ function gameOver() {
   location.reload();
 }
 function addAnsweringPlayerToList(answer) {
-  $('#answers').append($("<li>").text(answer.user_name));
+  var $div = $('#player-notification');
+  $div.show();
+  $li = $("<li>").text(answer.user_name);
+  $div.find('ul').append($li);
+  console.log(answer.user_name);
 }
 
 function lockQuestion() {
 }
 
-function showQuestion(question) {
-  console.log('showing a new question');
-  console.log(question.question);
+function runPieTimer(){
+  $('#demo').pietimer({
+    seconds: <%= Rails.configuration.question_time %>,
+    color: 'rgba(215, 44, 90, 0.9)',
+    height: 100,
+    width: 100,
+    is_reversed: true
+  }); 
+  $('#demo').pietimer('start');
+};
 
-  var category = question.category;
-  var questionText = question.question;
+function showQuestion(question) {
+  $('#question-category').text(question.category);
+  $('#question-text').text(question.question);
+
+  $('#player-notification ul').empty();
+  $('#player-notification').hide();
+  runPieTimer();
+
   var answerKeys = ['answer', 'choice1', 'choice2', 'choice3'];
   for (var i = 1; i <= 4; i++) {
     var $answerDiv = $('#answer-'+i);
@@ -57,14 +74,4 @@ function showQuestion(question) {
     .find('.answer-text').text(answerText);
   }
 
-  $('#question-category').text(category);
-  $('#question-text').text(questionText);
-  
-  function choiceButton(answerText) {
-    return $("<button>")
-      .click(function () {
-        $("#game-questions button").attr('disabled', true);
-      })
-    .text(answerText);
-  }
 }
