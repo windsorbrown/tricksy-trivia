@@ -50,8 +50,8 @@ function showQuestion(question) {
 
   var answerKeys = ['answer', 'choice1', 'choice2', 'choice3'];
   for (var i = 1; i <= 4; i++) {
-    var $answerDiv = $('#answer-' + i);
-    var answerText = question[answerKeys[i - 1]];
+    let $answerDiv = $('#answer-' + i);
+    let answerText = question[answerKeys[i - 1]];
     $answerDiv.unbind('click').one('click', function () {
       $.ajax({
         url: location + '/user_answers/',
