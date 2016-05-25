@@ -28,7 +28,12 @@ class Game < ApplicationRecord
 
   def winner
     return nil unless finished?
-    players.find_by(winner: true)&.user
+    players.find_by(winner: true)
+  end
+
+  def losers
+    return nil unless finished?
+    players.where(winner: false)
   end
 
   def notify_channels
