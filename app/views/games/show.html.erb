@@ -24,7 +24,7 @@
         <% end %>
       </ul>
     </section>
-    <script>subscribeRoomChannel(<%= @game.id %>).defer</script>
+    <script>$(subscribeRoomChannel(<%= @game.id %>))</script>
   <% elsif @game.active? %>
     <% if @player %>
       <div class="row">
@@ -37,7 +37,7 @@
           <ul id ="answers"></ul>
         </div>
       </div>
-      <script>beginGame(<%= @game.id %>).defer</script>
+      <script>beginGame(<%= @game.id %>)</script>
     <% else %>
       <h2>Game started without you.<h2/>
     <% end %>
