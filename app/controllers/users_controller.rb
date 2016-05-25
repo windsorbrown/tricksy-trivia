@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @topscores = recentscores.group(:user).sum(:score)
 
     wins = Player.where(user: current_user).where(winner: true).count
-    losses = Player.where(user: current_user).where("winner IS NULL OR winner = FALSE").count
+    losses = Player.where(user: current_user).where(winner: false).count
     @win_loss = { wins: wins, losses: losses }
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524064338) do
+ActiveRecord::Schema.define(version: 20160525043733) do
 
   create_table "game_questions", force: :cascade do |t|
     t.integer  "game_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160524064338) do
   create_table "players", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
-    t.boolean "winner"
+    t.boolean "winner",  default: false
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
