@@ -8,3 +8,23 @@ $(function() {
         window.location.href = "/games/" + game_number;
     });
 });
+
+function updateBoard() {
+  var $scoreboard = $('#scoreboard'),
+    $userli = $scoreboard.children('li');
+
+  $userli.sort(function(a,b){
+    var an = a.getAttribute('data-score-field'),
+      bn = b.getAttribute('data-score-field');
+
+    if(parseInt(an) > parseInt(bn)) {
+      return -1;
+    }
+    if(parseInt(an) < parseInt(bn)) {
+      return 1;
+    }
+    return 0;
+  });
+
+  $userli.detach().appendTo($scoreboard);
+};
