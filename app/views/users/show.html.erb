@@ -1,22 +1,23 @@
-<div class="content-wrapper">
+<br />
+<br />
+<br />
+<section class="main__middle__container">
   <div class="container">
-    <section class="content-header">
-      <h1>Dashboard</h1>
-    </section>
-    <section class="content">
-      <div class="callout callout-danger">
-        <h4>Welcome <%= current_user.first_name %></h4>
-        <p>Start a New Public or Private Trivia Game, or join a game</p>
-      </div>
-      <div class ="row">
-        <div class="col-md-6 col-sm-3 text-right">
-          <p>
-          <%= button_to "New Public Game", games_path, class: 'btn btn-success', params: {keep_private: false} %>
-          </p>
-          <p>
-          <%= button_to "New Private Game", games_path, class: 'btn btn-primary', params: {keep_private: true} %>
-          </p>
-        </div>
+    <div class="row nothing">
+      <section class="col-md-8 main-content">
+        <h3>
+        <%= image_tag(current_user.image, class: "img-circle", size: 60)%>&nbsp;&nbsp; <span class="label label-primary">Welcome <%= current_user.first_name %></span>&nbsp;</h3>
+
+        <span class="label label-info">Start a New Public or Private Trivia Game, or join a game</span>&nbsp;
+        <div class ="row">
+          <div class="col-md-6 col-sm-3 text-right">
+            <p>
+            <%= button_to "NEW PUBLIC GAME", games_path, class: 'btn btn-success', params: {keep_private: false} %>
+            </p>
+            <p>
+            <%= button_to "New Private Game", games_path, class: 'btn btn-default', params: {keep_private: true} %>
+            </p>
+          </div>
         <p></p>
         <div class="col-md-6 col-sm-3">
           <form id = "game-form" method="get" action="/games/">
@@ -29,7 +30,6 @@
           </form>
         </div><!-- /.col-md-6 -->
       </div>
-      <p></p>
       <div class ="row">
         <div class="col-md-6">
           <div class="box box-danger">
@@ -37,11 +37,10 @@
               <h3 class="box-title">Public Games</h3>
             </div>
             <div class="box-body no-padding">
-              <ul class="users-list clearfix" id = "game-list">
-
+              <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
                 <% @games.each do |game| %>
                 <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
-                  <%= image_tag game.owner.image, class: "img-circle" %></a>
+                  <%= image_tag game.owner.image, class: "img-circle" , size: 50 %></a>
                   <span class="users-list-name"><%= game.owner.first_name %></span>
                 <% end %>
                 </li>
@@ -49,8 +48,24 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="box box-default">
+      <div class="col-md-6">
+        <div class="box box-danger" style="text-align:left;">
+          <div class="box-header with-border">
+            <h3 class="box-title">Top Players Today</h3>
+          </div>
+           <% if @topscores %>
+            <ul id="scoreboard" class="list-group" style="width:100%">
+             <% @topscores.each do |player| %> 
+              <li class="list-group-item" id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><h5><%= image_tag(player[0].image, class: "img-circle", size: 35)%>&nbsp;&nbsp;&nbsp;  <span class="label label-warning"><%=player[0].name%> <span id="user-score-<%=player[0].id%>">- <%=player[1]%> Points</span></span> </h5></li>
+              <% end %> 
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      </section>
+      <aside class="col-md-4">
+                    <div class="box box-default">
             <div class="box-header with-border">
               <h3 class="box-title">Game History</h3>
             </div>
@@ -59,28 +74,12 @@
                 <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-sm-6">
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Top Players Today</h3>
-            </div>
-            <% if @topscores %>
-              <ul id="scoreboard">
-                <% @topscores.each do |player| %> 
-                  <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>">
-                    <span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!
-                  </li>
-                <% end %> 
-              </ul>
-            <% end %>
-          </div>
-    </section>
-      </div>
-</div>
+          </div>       
+
+      </aside>
+    </div>
+  </div>
+</section>
 
 
 

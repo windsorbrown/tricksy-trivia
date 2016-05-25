@@ -1,4 +1,4 @@
-<div class="container">
+
   <h3>Game ID: <%= @game.id %></h3>
   <h1>
     Welcome to <%=@game.owner.first_name %>'s game!
@@ -23,6 +23,11 @@
           <li id="user-<%= player.user.id %>"><%= player.user.name %></li>
         <% end %>
       </ul>
+
+                <!-- /btn-group -->
+           
+
+    
     </section>
     <script>subscribeRoomChannel(<%= @game.id %>)</script>
   <% elsif @game.active? %>
@@ -35,4 +40,5 @@
   <% else %>
     <h2>Game is over. Winner is <%= @game.winner.name %>.</h2>
   <% end %>
-</div>
+
+       
