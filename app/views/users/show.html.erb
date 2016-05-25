@@ -69,11 +69,14 @@
             <ul class="scoreboard">
              <% @topscores.each do |player| %> 
               <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
-              <% end %> 
-            </ul>
-          <% end %>
-          </div>
-        </div>
+               <% end %> 
+          </ul>
+        <% end %>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <h2>Game History</h2>
+        <%= render @user.games.where(status: :finished).limit(5) %>
+        <%= pie_chart (@win_loss), width: "400px", height: "400px"%>
       </div>
     </section>
   </div>
@@ -84,11 +87,11 @@
 <script>
 var updateBoard = function() {
   var $scoreboard = $('ul.scoreboard'),
-    $userli = $scoreboard.children('li');
+      $userli = $scoreboard.children('li');
 
   $userli.sort(function(a,b){
     var an = a.getAttribute('data-score-field'),
-      bn = b.getAttribute('data-score-field');
+        bn = b.getAttribute('data-score-field');
 
     if(an > bn) {
       return -1;
