@@ -4,7 +4,11 @@ class UserAnswer < ApplicationRecord
   has_one :game, through: :game_question
   has_one :question, through: :game_question
   
-  validates_uniqueness_of :user, scope: :game
+  validate :one_answer_per_user
+
+  def one_answer_per_user
+    errors.add(:user, "can't answer multiple times") if game_question.user_answers.find_by(user: user)
+  end
 
   scope :created_between, lambda {|start_date, end_date| where("created_at >= ? AND created_at <= ?", start_date, end_date )}
 
