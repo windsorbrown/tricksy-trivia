@@ -69,7 +69,7 @@
               <h3 class="box-title">Top Players Today</h3>
             </div>
             <% if @topscores %>
-              <ul class="scoreboard">
+              <ul id="scoreboard">
                 <% @topscores.each do |player| %> 
                   <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>">
                     <span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!
@@ -85,25 +85,7 @@
 
 
 <script>
-var updateBoard = function() {
-  var $scoreboard = $('ul.scoreboard'),
-      $userli = $scoreboard.children('li');
 
-  $userli.sort(function(a,b){
-    var an = a.getAttribute('data-score-field'),
-        bn = b.getAttribute('data-score-field');
-
-    if(an > bn) {
-      return -1;
-    }
-    if(an < bn) {
-      return 1;
-    }
-    return 0;
-  });
-
-  $userli.detach().appendTo($scoreboard);
-};
 updateBoard();
 
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {

@@ -27,4 +27,9 @@ class GamesController < ApplicationController
     @game.active! if current_user == @game.owner
     redirect_to @game
   end
+
+  def finish
+    @game = Game.find(params[:game_id])
+    redirect_to @game
+  end
 end
