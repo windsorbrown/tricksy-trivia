@@ -20,8 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use charts
 gem 'chartkick'
-gem 'sprockets-es6'
-gem 'babel-transpiler', github: 'babel/ruby-babel-transpiler'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
