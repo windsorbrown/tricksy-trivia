@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     recentscores = UserAnswer.created_between(1.day.ago, Time.now)
     @topscores = recentscores.group(:user).sum(:score)
 
-    wins = Player.where(user: current_user).where(winner: true).count
-    losses = Player.where(user: current_user).where(winner: false).count
+    done_players = Player.where(user: current_user).joins(:game).where("games.status = 2")
+    wins = done_players.where(winner: true).count
+    losses = done_players.where(winner: false).count
     @win_loss = { wins: wins, losses: losses }
   end
 
