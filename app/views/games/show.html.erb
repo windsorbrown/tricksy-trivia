@@ -27,16 +27,7 @@
     <script defer>subscribeRoomChannel(<%= @game.id %>)</script>
   <% elsif @game.active? %>
     <% if @player %>
-      <div class="row">
-        <div class="col-md-8 col-sm-6"> 
-          <table id = "game-questions"></table>
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-          <h1>Players progress</h1>
-          <ul id ="answers"></ul>
-        </div>
-      </div>
+      <%= render 'games/active' %>
       <script defer>beginGame(<%= @game.id %>)</script>
     <% else %>
       <h2>Game started without you.<h2/>

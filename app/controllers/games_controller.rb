@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(
       owner: current_user, 
-      keep_private: params[:game]['keep_private'],
+      keep_private: ("true" == params['keep_private']),
       questions: Question.limit(5).order("RANDOM()")
     )
     @game.players.new(user: current_user)
