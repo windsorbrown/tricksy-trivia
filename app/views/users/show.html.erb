@@ -76,13 +76,8 @@
               </ul>
             <% end %>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <h2>Game History</h2>
-            <%= render @user.games.where(status: :finished).limit(5) %>
-            <%= pie_chart (@win_loss), width: "400px", height: "400px"%>
-          </div>
     </section>
-        </div>
+      </div>
 </div>
 
 
