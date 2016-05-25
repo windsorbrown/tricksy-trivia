@@ -1,79 +1,95 @@
-
-<!-- start title area -->
-<section id="titleArea">
+<div class="content-wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>My Dashboard</h2>
+    <section class="content-header">
+      <h1>Dashboard</h1>
+    </section>
+    <section class="content">
+      <div class="callout callout-danger">
+        <h4>Welcome <%= current_user.first_name %></h4>
+        <p>Start a New Public or Private Trivia Game, or join a game</p>
       </div>
-    </div>
-  </div>
-</section>
-<!-- end title area -->
-
-<!-- start process area -->
-<section id="processArea">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-sm-6">
-
-        <div class="btn-group btn-group-lg" role="group" aria-label="...">
-          <%= form_for Game.new do |f| %>
-            <%= f.submit "New Game" %>
-            <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
-          <% end %>
-        </div><p></p>
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <form id = "game-form" method="get" action="/games/">
-              <div class="input-group">
-                <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
+      <div class ="row">
+        <div class="col-md-6 col-sm-3 text-right">
+         <%= form_for Game.new do |f| %>             
+              <%= f.submit "New Public Game" ,:class => 'btn btn btn-success'%>
+              <%= f.check_box :keep_private, checked_value: true %><span>Private Game</span>
+            <% end %>
+        </div>
+        <p></p>
+        <div class="col-md-6 col-sm-3">
+          <form id = "game-form" method="get" action="/games/">
+            <div class="input-group">
+              <input type="text" name="game_number" class="form-control" placeholder="Enter room ID">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">Join Game</button>
                 </span>
-              </div><!-- /input-group -->
-            </form>
-          </div><!-- /.col-md-6 -->
+            </div><!-- /input-group -->
+          </form>
+        </div><!-- /.col-md-6 -->
+      </div>
+      <p></p>
+      <div class ="row">
+        <div class="col-md-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Public Games</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="users-list clearfix" id = "game-list">
+
+                <% @games.each do |game| %>
+                <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
+                  <%= image_tag game.owner.image, class: "img-circle" %></a>
+                  <span class="users-list-name"><%= game.owner.first_name %></span>
+                <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Game History</h3>
+            </div>
+            <div class="box-body">
+              <div class="chart-responsive">
+                <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Top Players Today</h3>
+            </div>
+            <% if @topscores %>
+              <ul class="scoreboard">
+                <% @topscores.each do |player| %> 
+                  <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>">
+                    <span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!
+                  </li>
+                <% end %> 
+              </ul>
+            <% end %>
+          </div>
+    </section>
+      </div>
+</div>
 
-      <div class="col-md-4 col-sm-6">
-        <% if @games %>
-          <h2>Public Games Open</h2>
-          <ul class="game-list">
-            <% @games.each do |game| %>
-              <a id="game-<%=game.id%>" href="http://localhost:3000/games/<%=game.id%>"><%=game.owner.name%>'s Game</a>
-              <% end %>
-          </ul>
-        <% end %>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <% if @topscores %>
-          <h2>Top Players Today</h2>
-          <ul class="scoreboard">
-             <% @topscores.each do |player| %> 
-              <li id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> by <%=player[0].name%>!</li>
-               <% end %> 
-          </ul>
-        <% end %>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <h2>Game History</h2>
-        <%= render @user.games.where(status: :finished) %>
-        <%= pie_chart (@win_loss), width: "400px", height: "400px"%>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <script>
 var updateBoard = function() {
   var $scoreboard = $('ul.scoreboard'),
-    $userli = $scoreboard.children('li');
+      $userli = $scoreboard.children('li');
 
   $userli.sort(function(a,b){
     var an = a.getAttribute('data-score-field'),
-      bn = b.getAttribute('data-score-field');
+        bn = b.getAttribute('data-score-field');
 
     if(an > bn) {
       return -1;
@@ -90,11 +106,14 @@ updateBoard();
 
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {
   received: (data) => {
-    let gameList = $('.game-list');
+    let gameList = $('#game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
-      let owner = data.open_game.owner;
-      let game = data.open_game.game;
-      gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `http://localhost:3000/games/${game.id}`}));
+      game_id = data.open_game.game.id;
+      owner_name = data.open_game.owner_name;
+      avatar_url = data.open_game.owner.image;
+      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'> 
+          <image src=${avatar_url} class="img-circle"></a> 
+          <span class='users-list-name'>${ owner_name } </span> </li>`);
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
       let game = data.close_game.game;
       gameList.find(`#game-${game.id}`).remove();

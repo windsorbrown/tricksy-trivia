@@ -24,25 +24,7 @@ class GamesController < ApplicationController
 
   def play_game
     @game = Game.find(params[:game_id])
-    if @game.active?
-      render layout: 'page' and return
-    elsif @game.finished?
-      fail "Tried to start a finished game"
-    end
-    @game.active! #TODO: check if this user is authorized
-    render layout: 'page'
-  end
-
-  def finish
-    @game = Game.find(params[:game_id])
-    @game.finished!
-    if @game.owner == current_user
-      Player.find_by(user: current_user, game: @game).update(winner: true)
-    end
-    render inline: @game.status, layout: 'page'
-  end
-
-  def find_game
-    @game = Game.find params[:id]
+    @game.active! if current_user == @game.owner
+    redirect_to @game
   end
 end

@@ -7,11 +7,27 @@
                 <div class="jumbotron">
                     <h1 class="banner_header">Trivia </h1>
                     <p class="banner_header"> </p>
-                     <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
-                    <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>
+                      <div class="row">
+        <div class="col-md-3 col-sm-3">
+        </div>
+             <div class="col-md-3 col-sm-3">
+
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Top Players Today</h3>
                 </div>
+           <% if @topscores %>
+            <ul id="scoreboard" class="list-group">
+             <% @topscores.each do |player| %> 
+              <li class="list-group-item list-group-item-info" id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><%= image_tag(player[0].image, class: "img-circle", size: 35)%><%=player[0].name%> <span id="user-score-<%=player[0].id%>"> <%=player[1]%></span> - </li>
+              <% end %> 
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      </div>
             </li>                
-            <li>
+       <!--      <li>
               <img src="<%= image_path('front.png')%>" alt="">
                 <div class="jumbotron">
                     <h1 class="banner_header">Make your own Trivia</h1>
@@ -26,8 +42,64 @@
                   <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
                     <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>
                 </div>
-            </li>                
+            </li>           -->      
         </ul>  
     </div>      
     <!-- end main slider -->
 </section>
+
+<script>
+var updateBoard = function() {
+  var $scoreboard = $('#scoreboard'),
+    $userli = $scoreboard.children('li');
+
+  $userli.sort(function(a,b){
+    var an = a.getAttribute('data-score-field'),
+      bn = b.getAttribute('data-score-field');
+
+    if(an > bn) {
+      return -1;
+    }
+    if(an < bn) {
+      return 1;
+    }
+    return 0;
+  });
+
+  $userli.detach().appendTo($scoreboard);
+};
+updateBoard();
+
+App.cable.subscriptions.create({channel: "OverviewChannel"}, {
+  received: (data) => {
+    let gameList = $('.game-list');
+    if (data.open_game && data.open_game.game.keep_private === 0){
+      let owner = data.open_game.owner;
+      let game = data.open_game.game;
+      gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `http://localhost:3000/games/${game.id}`}));
+    } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
+      let game = data.close_game.game;
+      gameList.find(`#game-${game.id}`).remove();
+    }
+    if (data.update_scores){
+      let message = data.update_scores;
+      if ($("#user-score-"+message.user.id).length) {
+        $("#user-"+message.user.id).attr("data-score-field", function(i, oldval){
+        return parseInt( oldval, 10) + parseInt(message.new_score)});
+        $("#user-score-"+message.user.id).text(function(i, oldval){
+        return parseInt( oldval, 10) + parseInt(message.new_score)});
+        
+        updateBoard();
+
+      } else{
+        let message = data.update_scores;
+        let scoreboard = $("#scoreboard");
+        scoreboard.append($('<li>').html(`<span id="user-score-${message.user.id}">${message.new_score}</span> by ${message.user.name}!`).data('score-field',`${message.user.score}`));
+        updateBoard();
+      }
+    }
+  }
+})
+
+
+</script>

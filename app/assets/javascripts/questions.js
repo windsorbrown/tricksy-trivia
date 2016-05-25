@@ -16,14 +16,13 @@ function beginGame(game_id) {
 }
 
 function gameOver() {
-  window.location.href = 'finish';
+  location.reload();
 }
 function addAnsweringPlayerToList(answer) {
   $('#answers').append($("<li>").text(answer.user_name));
 }
 
 function lockQuestion() {
-
 }
 
 function showQuestion(question) {
@@ -41,8 +40,9 @@ function showQuestion(question) {
   function choiceButton(answerText) {
     return $("<button>")
       .click(function () {
+        $("#game-questions button").attr('disabled', true);
         $.ajax({
-          url: 'user_answers/',
+          url: location + '/user_answers/',
           method: 'post',
           data: {
             answer: answerText,
@@ -55,7 +55,6 @@ function showQuestion(question) {
             } else if (res.correct === false) {
               $(this).toggleClass('active-wrong');
             }
-            $("button").attr('disabled', true);
           }
         });
       })
