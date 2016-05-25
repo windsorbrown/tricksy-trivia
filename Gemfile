@@ -28,6 +28,9 @@ gem 'jquery-rails'
 
 gem 'timers'
 
+gem 'sprockets-es6'
+gem 'babel-transpiler', github: 'babel/ruby-babel-transpiler'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'
 gem 'jquery-turbolinks'
