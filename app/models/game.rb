@@ -49,16 +49,8 @@ class Game < ApplicationRecord
   end
 
   def calculate_winner
-    winner_id = ActiveRecord::Base.connection.execute("
-                    SELECT players.id AS player_id, SUM(user_answers.score) AS score FROM players
-                    JOIN user_answers
-                      ON players.user_id = user_answers.user_id
-                    WHERE players.game_id = #{id}
-                    GROUP BY players.id
-                    ORDER BY score DESC
-                    LIMIT 1;
-                   ").first['player_id']
-    winner = Player.find(winner_id)
+    winner = Player.joins(:user).joins("JOIN 'user_answers' ON users.id = user_answers.user_id")
+    .select("SUM(user_answers.score) AS total_score, players.*").where(game_id: id).group(:player).order('total_score DESC').first
     winner.update(winner: true)
     #ActionCable.server.broadcast "overview_channel",
     #  game_score: {game: @game, winner: winner}
