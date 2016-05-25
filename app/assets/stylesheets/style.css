@@ -1552,7 +1552,7 @@ a.submenu {
 .menuBar li li a {
 	color: #FFF;
 }
-.menuBar li.dropdown:hover. .menuBar li.dropdown.active {
+.menuBar li.dropdown:hover .menuBar li.dropdown.active {
 border-bottom: #1BA39C solid 0px;
 }
 .menuBar li.current {
