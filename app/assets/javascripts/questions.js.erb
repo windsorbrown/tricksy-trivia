@@ -23,9 +23,8 @@ function gameOver() {
 function addAnsweringPlayerToList(answer) {
   var $div = $('#player-notification');
   $div.show();
-  $li = $("<li>").text(answer.user_name);
+  var $li = $("<li>").text(answer.user_name);
   $div.find('ul').append($li);
-  console.log(answer.user_name);
 }
 
 function lockQuestion() {}
