@@ -34,7 +34,7 @@ function subscribeRoomChannel(game_id) {
         playerList.find('#user-' + _user.id).remove();
       } else if (data.game_start) {
         var game = data.game_start.game;
-        location.reload();
+        window.location.href += "/play_game";
       }
     }
   });
