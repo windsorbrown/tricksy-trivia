@@ -1,1 +1,1 @@
-Rails.configuration.question_time = 3.seconds
+Rails.configuration.question_time = 10.seconds
