@@ -55,7 +55,7 @@ class Game < ApplicationRecord
                       ON players.user_id = user_answers.user_id
                     WHERE players.game_id = #{id}
                     GROUP BY players.id
-                    ORDER BY score
+                    ORDER BY score DESC
                     LIMIT 1;
                    ").first['player_id']
     winner = Player.find(winner_id)

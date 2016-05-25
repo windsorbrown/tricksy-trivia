@@ -4,6 +4,8 @@ class UserAnswer < ApplicationRecord
   has_one :game, through: :game_question
   has_one :question, through: :game_question
   
+  validates_uniqueness_of :user, scope: :game
+
   scope :created_between, lambda {|start_date, end_date| where("created_at >= ? AND created_at <= ?", start_date, end_date )}
 
   after_save do
