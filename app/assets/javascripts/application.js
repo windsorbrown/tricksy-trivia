@@ -14,7 +14,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap.min
 //= require jquery.mixitup.min
 //= require scrolld.min.js
@@ -23,3 +22,4 @@
 //= require highcharts
 //= require chartkick
 //= require scripts
+//= require_tree .
