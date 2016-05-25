@@ -49,10 +49,8 @@ class Game < ApplicationRecord
   end
 
   def calculate_winner
-    winner = Player.joins(:user).joins("JOIN 'user_answers' ON users.id = user_answers.user_id")
-    .select("SUM(user_answers.score) AS total_score, players.*").where(game_id: id).group(:player).order('total_score DESC').first
+    winner = Player.joins(:user).joins("JOIN user_answers ON users.id = user_answers.user_id")
+    .select("SUM(user_answers.score) AS total_score, players.*").where(game_id: id).group("players.id").order('total_score DESC').first
     winner.update(winner: true)
-    #ActionCable.server.broadcast "overview_channel",
-    #  game_score: {game: @game, winner: winner}
   end
 end
