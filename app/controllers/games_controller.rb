@@ -29,6 +29,7 @@ class GamesController < ApplicationController
   end
 
   def finish
+    @game = Game.find(params[:game_id])
     redirect_to @game
   end
 end
