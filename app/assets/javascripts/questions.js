@@ -26,30 +26,26 @@ function lockQuestion() {
 }
 
 function showQuestion(question) {
-  $('#answers').empty();
-  var tds = [].concat(
-      ['category', 'question'].map((key) =>
-        $("<td>").text(question[key])),
-      ['answer', 'choice1', 'choice2', 'choice3'].map((key) =>
-        $("<td>").append(choiceButton(question[key]))));
+  console.log('showing a new question');
+  console.log(question.question);
 
-  $("#game-questions")
-    .empty()
-    .append(tds);
-  
-  function choiceButton(answerText) {
-    return $("<button>")
-      .click(function () {
-        $("#game-questions button").attr('disabled', true);
+  var category = question.category;
+  var questionText = question.question;
+  var answerKeys = ['answer', 'choice1', 'choice2', 'choice3'];
+  for (var i = 1; i <= 4; i++) {
+    var $answerDiv = $('#answer-'+i);
+    var answerText = question[answerKeys[i-1]];
+    $answerDiv.unbind('click')
+      .one('click', function () {
         $.ajax({
           url: location + '/user_answers/',
-          method: 'post',
+          method: 'POST',
           data: {
             answer: answerText,
             question_id: question.id
           },
           dataType: 'json',
-          success: (res) => {
+          success: function(res) {
             if(res.correct){
               $(this).toggleClass('active-correct');
             } else if (res.correct === false) {
@@ -57,6 +53,17 @@ function showQuestion(question) {
             }
           }
         });
+      })
+    .find('.answer-text').text(answerText);
+  }
+
+  $('#question-category').text(category);
+  $('#question-text').text(questionText);
+  
+  function choiceButton(answerText) {
+    return $("<button>")
+      .click(function () {
+        $("#game-questions button").attr('disabled', true);
       })
     .text(answerText);
   }
