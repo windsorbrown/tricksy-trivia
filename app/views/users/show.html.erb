@@ -98,7 +98,7 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
       game_id = data.open_game.game.id;
       owner_name = data.open_game.owner_name;
       avatar_url = data.open_game.owner.image;
-      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'>
+      gameList.append(`<li id=game-${game_id} > <a href='/games/${game_id}'>
           <image src=${avatar_url} class="img-circle"></a>
           <span class='users-list-name'>${ owner_name } </span> </li>`);
     } else if (data.close_game) {
