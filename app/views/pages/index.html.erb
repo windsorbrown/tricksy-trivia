@@ -46,14 +46,12 @@ updateBoard();
 
 App.cable.subscriptions.create({channel: "OverviewChannel"}, {
   received: (data) => {
-    console.log(data);
     let gameList = $('.game-list');
     if (data.open_game && data.open_game.game.keep_private === 0){
       let owner = data.open_game.owner;
       let game = data.open_game.game;
       gameList.append($('<a>').text(owner.name + "'s Game").attr({id: `game-${game.id}`, href: `/games/${game.id}`}));
     } else if (data.close_game) {
-      console.log(data.close_game);
       let game = data.close_game.game;
       gameList.find(`#game-${game.id}`).remove();
     }
