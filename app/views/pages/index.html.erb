@@ -52,11 +52,11 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
     if (data.update_scores){
       let message = data.update_scores;
       if ($("#user-score-"+message.user.id).length) {
-        $("#user-"+message.user.id).attr("data-score-field", function(i, oldval){
-        return parseInt( oldval, 10) + parseInt(message.new_score)});
         $("#user-score-"+message.user.id).text(function(i, oldval){
-        return parseInt( oldval, 10) + parseInt(message.new_score)});
-        
+          return parseInt( oldval, 10) + parseInt(message.new_score)});
+        $("#user-"+message.user.id).attr("data-score-field", function(i, oldval){
+          return parseInt( oldval, 10) + parseInt(message.new_score)});
+
         updateBoard();
 
       } else{

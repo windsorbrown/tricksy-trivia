@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @games = Game.where(status: 'pending', keep_private: 0)
 
     recentscores = UserAnswer.created_between(1.day.ago, Time.now)
-    @topscores = recentscores.group(:user).sum(:score)
+    @topscores = recentscores.group(:user).order('sum_score desc').sum(:score).first(5)
 
     done_players = Player.where(user: current_user).joins(:game).where("games.status = 2")
     wins = done_players.where(winner: true).count
