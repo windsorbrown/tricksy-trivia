@@ -4,7 +4,7 @@ jim:
   name: Jim Stein
   oauth_token: 0898309820384
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/80.jpg
+  image: USER1.jpg
   user_name: someuser@some.com
 
 bob:
@@ -13,7 +13,7 @@ bob:
   name: Bob Eager
   oauth_token: 0778973924
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/70.jpg
+  image: USER2.jpg
   user_name: twitter@some.com
 
 three:
@@ -23,7 +23,7 @@ three:
   name: Tyler	Torres
   oauth_token: 07789732222
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/50.jpg
+  image: USER3.jpg
   user_name: twitter@some1.com
 
 four:
@@ -33,7 +33,7 @@ four:
   name: Alfonso	Clayton
   oauth_token: 07789732323
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/40.jpg
+  image: USER4.jpg
   user_name: twitter@some33.com
 
 five:
@@ -43,7 +43,7 @@ five:
   name: John Randel
   oauth_token: 07789732325
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/84.jpg
+  image: USER5.jpg
   user_name: twitter@some34.com
 
 six:
@@ -53,7 +53,7 @@ six:
   name: Phyllis	Fitzgerald
   oauth_token: 07789732326
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/women/80.jpg
+  image: USER6.jpg
   user_name: twitter@some35.com
 
 seven:
@@ -63,7 +63,7 @@ seven:
   name: Wilma	Caldwell
   oauth_token: 07789732327
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/women/20.jpg
+  image: USER7.jpg
   user_name: twitter@some36.com
 
 eight:
@@ -73,7 +73,7 @@ eight:
   name: Daniel	Parsons
   oauth_token: 07789732328
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/men/34.jpg
+  image: USER8.jpg
   user_name: twitter@some37.com
 
 nine:
@@ -83,7 +83,7 @@ nine:
   name: Beverly	Wilson
   oauth_token: 07789732329
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/women/44.jpg
+  image: USER9.jpg
   user_name: twitter@some38.com
 
 ten:
@@ -93,7 +93,7 @@ ten:
   name: Adrienne	Vasquez
   oauth_token: 07789732330
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/women/26.jpg
+  image: USER10.jpg
   user_name: twitter@some39.com
 
 eleven:
@@ -103,5 +103,5 @@ eleven:
   name: Kathleen	Lewis
   oauth_token: 07789732331
   oauth_expires_at: 2026-05-12 12:51:33
-  image: https://randomuser.me/api/portraits/women/28.jpg
+  image: USER11.jpg
   user_name: twitter@some340.com
