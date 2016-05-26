@@ -9,6 +9,7 @@ function beginGame(game_id) {
         next_question: showQuestion,
         game_over: gameOver
       }, function (event_type, callback) {
+          $('body').removeClass("loading");     
         if (message.event_type === event_type) {
           callback(message.data);
         }

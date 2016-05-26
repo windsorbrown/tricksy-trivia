@@ -1387,10 +1387,10 @@ a.submenu {
 	-moz-transition: all ease 0s;
 	-o-transition: all ease 0s;
 	transition: all ease 0s;
-	background: url('submenu.png') top left no-repeat;
+	background: url(<%= asset_path'submenu.png'%>) top left no-repeat;
 }
 a.submenu:hover {
-	background: url('submenu.png') bottom left no-repeat;
+	background: url(<%= asset_path'submenu.png'%>) bottom left no-repeat;
 }
 .menuBar {
 	padding-right: 15px;
@@ -2087,4 +2087,119 @@ footer {
 
 #answer-box {
   cursor: pointer;
+}
+
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8) 
+                url(<%= asset_path 'jtkTPvb.gif' %>) 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+
+.login-logo,
+.register-logo {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+.login-logo a,
+.register-logo a {
+  color: #444;
+}
+.login-page,
+.register-page {
+  background: #d2d6de;
+}
+.login-box,
+.register-box {
+  width: 360px;
+  margin: 7% auto;
+}
+@media (max-width: 768px) {
+  .login-box,
+  .register-box {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+.login-box-body,
+.register-box-body {
+  background: #fff;
+  padding: 20px;
+  border-top: 0;
+  color: #666;
+}
+.login-box-body .form-control-feedback,
+.register-box-body .form-control-feedback {
+  color: #777;
+}
+.login-box-msg,
+.register-box-msg {
+  margin: 0;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+.social-auth-links {
+  margin: 10px 0;
+}
+
+
+.btn-facebook {
+  color: #ffffff;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:focus,
+.btn-facebook.focus {
+  color: #ffffff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:hover {
+  color: #ffffff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:active,
+.btn-facebook.active,
+.open > .dropdown-toggle.btn-facebook {
+  color: #ffffff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:active,
+.btn-facebook.active,
+.open > .dropdown-toggle.btn-facebook {
+  background-image: none;
+}
+.btn-facebook .badge {
+  color: #3b5998;
+  background-color: #ffffff;
 }

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#create_social'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'user/dash', to: 'users#show' , as: 'user/dashboard'  ####totallly temporary to check the user pages before i make another controller

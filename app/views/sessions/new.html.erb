@@ -1,30 +1,37 @@
-<div class="content-wrapper">
-  <div class="container">
-    <section class="content-header">
-      <h1>Dashboard</h1>
-    </section>
-  
-    <section class="content">
-      <div class="callout callout-danger">
-        <h4>Welcome </h4>
-        <p>Please login to continue</p>
+<br />
+<br />
+<br />
+<section class="main__middle__container">
+  <div class="container" id ="hideme">
+    <div class="row nothing">
+      <section class="col-md-12 pull-left main-content">
+        <div class="login-box">
+  <!-- /.login-logo -->
+
+    <h2><span class="label label-danger">Sign in</span> </h2>
+      <%= form_tag session_path do %>
+      <div class="form-group has-feedback">
+        <%= text_field_tag :uid, "" ,class: 'form-control',placeholder: 'Enter your ID'%> 
       </div>
-      <div class="row">
-        <div class="col-md-12 col-sm-6">      
-          <%= form_tag session_path do %>
-          <div>
-            <%= label_tag :uid %><br/>
-            <%= text_field_tag :uid %>
+      
+          <div><%= submit_tag "Log In" , class: "btn btn-primary"%>
           </div>
-          <div><%= submit_tag "Log In" %></div>
-          <% end %>
-          <%= link_to image_tag('facebook-connect.png') ,"auth/facebook" %>
-          <%= link_to image_tag('twitter-connect.png') , "auth/twitter" %>                       
+        
+        <% end %>
+        <div class="row">
+        <div class="col-md-12 col-xs-6">
+      <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-success"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+        </div>
       </div>
     </div>
-  </section>
+  <!-- /.login-box-body -->
+
+      </section>
+    </div>    
   </div>
-</div>
+</section>
 
 
-    
