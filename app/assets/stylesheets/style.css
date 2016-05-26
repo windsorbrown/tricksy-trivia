@@ -1387,10 +1387,10 @@ a.submenu {
 	-moz-transition: all ease 0s;
 	-o-transition: all ease 0s;
 	transition: all ease 0s;
-	background: url('../images/submenu.png') top left no-repeat;
+	background: url('submenu.png') top left no-repeat;
 }
 a.submenu:hover {
-	background: url('../images/submenu.png') bottom left no-repeat;
+	background: url('submenu.png') bottom left no-repeat;
 }
 .menuBar {
 	padding-right: 15px;
