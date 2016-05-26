@@ -10,9 +10,9 @@ class Player < ApplicationRecord
   end
 
   def score
-    Player.joins(:user).joins("JOIN user_answers ON users.id = user_answers.user_id")
-    .where(game_id: game.id, user_id: user.id).sum('user_answers.score')
+    game.user_answers.where(user: user).sum(:score)
   end
+  
   before_destroy do
     ActionCable.server.broadcast "room_#{game.id}",
       removed_user: { name: user.name, id: user.id }
