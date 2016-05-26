@@ -39,9 +39,9 @@
             <div class="box-body no-padding">
               <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
                 <% @games.each do |game| %>
-                <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
-                  <%= image_tag(game.owner.image, class: "img-circle" , size: 50) %></a>
-                  <span class="users-list-name"><%= game.owner.first_name %></span>
+                <li id="game-<%=game.id%>" > <a href="/games/<%=game.id%>">
+                  <%= image_tag(game.owner.image, class: "img-circle" , size: 50) %>
+                  <%= game.owner.first_name %></a>
                 <% end %>
                 </li>
               </ul>
