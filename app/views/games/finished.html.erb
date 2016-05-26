@@ -15,10 +15,10 @@
                   <h3 class="box-title">Player Standing:</h3>
                 </div>
                 <div class="box-body no-padding">
-                  <h2>Winner is 
+                  <h5>Winner is 
                   <%= image_tag(@game.winner.user.image, class: "  img-circle", size: 60)%>
 
-                  <%= @game.winner.user.name %> with <%= @game.winner.score %> points.</h2>
+                  <%= @game.winner.user.name %> with <%= @game.winner.score %> points.</h5>
                   <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
                       <% @game.losers&.each do |player| %>
                     <li id="user-<%= player.user.id %>"><%= image_tag player.user.image, class: "img-circle" , size: 50 %>
