@@ -40,7 +40,7 @@
               <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
                 <% @games.each do |game| %>
                 <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
-                  <%= image_tag game.owner.image, class: "img-circle" , size: 50 %></a>
+                  <%= image_tag(game.owner.image, class: "img-circle" , size: 50) %></a>
                   <span class="users-list-name"><%= game.owner.first_name %></span>
                 <% end %>
                 </li>
@@ -71,10 +71,14 @@
             </div>
             <div class="box-body">
               <div class="chart-responsive">
-                <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+                <% if @user_has_played > 0 %>
+                  <%= pie_chart (@win_loss), width: "100%", height: "100%", colors: ["#00cc66", "#ff4d4d"]%>
+                <% else %>
+                  <p> You have not played any games </p>
+                <% end %>
               </div>
             </div>
-          </div>       
+          </div>
 
       </aside>
     </div>
@@ -94,8 +98,8 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
       game_id = data.open_game.game.id;
       owner_name = data.open_game.owner_name;
       avatar_url = data.open_game.owner.image;
-      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'> 
-          <image src=${avatar_url} class="img-circle"></a> 
+      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'>
+          <image src=${avatar_url} class="img-circle"></a>
           <span class='users-list-name'>${ owner_name } </span> </li>`);
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
       let game = data.close_game.game;
@@ -108,7 +112,7 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
         return parseInt( oldval, 10) + parseInt(message.new_score)});
         $("#user-score-"+message.user.id).text(function(i, oldval){
         return parseInt( oldval, 10) + parseInt(message.new_score)});
-        
+
         updateBoard();
 
       } else{
