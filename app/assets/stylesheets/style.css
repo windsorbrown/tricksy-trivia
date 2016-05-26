@@ -1387,10 +1387,10 @@ a.submenu {
 	-moz-transition: all ease 0s;
 	-o-transition: all ease 0s;
 	transition: all ease 0s;
-	background: url('submenu.png') top left no-repeat;
+	background: url(<%= asset_path'submenu.png'%>) top left no-repeat;
 }
 a.submenu:hover {
-	background: url('submenu.png') bottom left no-repeat;
+	background: url(<%= asset_path'submenu.png'%>) bottom left no-repeat;
 }
 .menuBar {
 	padding-right: 15px;
@@ -2104,7 +2104,7 @@ footer {
     height:     100%;
     width:      100%;
     background: rgba( 255, 255, 255, .8) 
-                url('jtkTPvb.gif') 
+                url(<%= asset_path 'jtkTPvb.gif' %>) 
                 50% 50% 
                 no-repeat;
 }
