@@ -40,7 +40,7 @@
               <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
                 <% @games.each do |game| %>
                 <li> <a id="game-<%=game.id%>" href="/games/<%=game.id%>">
-                  <%= image_tag game.owner.image, class: "img-circle" , size: 50 %></a>
+                  <%= image_tag(game.owner.image, class: "img-circle" , size: 50) %></a>
                   <span class="users-list-name"><%= game.owner.first_name %></span>
                 <% end %>
                 </li>
@@ -72,10 +72,10 @@
             <div class="box-body">
               <div class="chart-responsive">
                 <% if @user_has_played > 0 %>
-                  <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+                  <%= pie_chart (@win_loss), width: "100%", height: "100%", colors: ["#00cc66", "#ff4d4d"]%>
                 <% else %>
                   <p> You have not played any games </p>
-                <% end %> 
+                <% end %>
               </div>
             </div>
           </div>

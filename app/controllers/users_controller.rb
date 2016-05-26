@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     wins = done_players.where(winner: true).count
     losses = done_players.where(winner: false).count
     @win_loss = { wins: wins, losses: losses }
-    @user_has_played = wins - losses
+    @user_has_played = wins + losses
   end
 
   def create
