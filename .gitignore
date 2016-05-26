@@ -27,3 +27,5 @@
 .ruby-version
 .jshintrc
 /public/
+
+.DS*
