@@ -39,9 +39,7 @@
             <% url = request.original_url %>
             <br />
             <div class="fb-send" data-href="<%=url%>" ></div>
-
-
-<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%=url%>&layout=button_count&mobile_iframe=true&appId=859251704186405&width=200&height=50" width="200" height="50" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=<%=url%>&layout=button_count&mobile_iframe=true&appId=859251704186405&width=200&height=50" width="200" height="50" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
           </section>
         <script>subscribeRoomChannel(<%= @game.id %>)</script>
       </section>
