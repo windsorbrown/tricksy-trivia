@@ -13,7 +13,7 @@
            <% if @topscores %>
             <ul id="scoreboard" class="list-group" style="width:100%;text-align:left;padding:1px;">
              <% @topscores.each do |player| %> 
-              <li class="list-group-item" id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><h5><%= image_tag(player[0].image, class: "img-circle", size: 40)%>&nbsp;&nbsp;&nbsp;  <span class="label label-warning"><%=player[0].name%>  <span class="badge"><span id="user-score-<%=player[0].id%>">- <%=player[1]%> </span></span></span> </h5></li>
+              <li class="list-group-item" id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><h5><%= image_tag(player[0].image, class: "img-circle", size: 40)%>&nbsp;&nbsp;&nbsp;  <span class="label label-warning"><%=player[0].name%>  <span class="badge"><span id="user-score-<%=player[0].id%>"> <%=player[1]%> </span></span></span> </h5></li>
               <% end %> 
             </ul>
           <% end %>
