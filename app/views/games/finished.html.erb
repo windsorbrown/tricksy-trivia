@@ -12,21 +12,31 @@
             <section id="wait-list">
               <div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Player Standing:</h3>
+                  <h3 class="box-title">player standing:</h3>
                 </div>
                 <div class="box-body no-padding">
-                  <h5>Winner is 
-                  <%= image_tag(@game.winner.user.image, class: "  img-circle", size: 60)%>
+                  <h5>winner is 
+                    <%= image_tag(@game.winner.user.image, class: "  img-circle", size: 60)%>
 
-                  <%= @game.winner.user.name %> with <%= @game.winner.score %> points.</h5>
+                    <%= @game.winner.user.name %> with <%= @game.winner.score %> points.</h5>
                   <ul class="users-list clearfix" id = "game-list" style="list-style-type: none;">
-                      <% @game.losers&.each do |player| %>
-                    <li id="user-<%= player.user.id %>"><%= image_tag player.user.image, class: "img-circle" , size: 50 %>
-                    <span class="users-list-name"><%= player.user.name %>: <%= player.score %>
+                    <% @game.losers&.each do |player| %>
+                      <li id="user-<%= player.user.id %>"><%= image_tag player.user.image, class: "img-circle" , size: 50 %>
+                      <span class="users-list-name"><%= player.user.name %>: <%= player.score %>
                     </span></li>
-                    <% end %>
+                  <% end %>
                   </ul>
                 </div>
               </div>
             </section>
-         
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-3">
+            <a href="/user/dash">Return to Games List</a>
+          </div>
+        </div>
+      </section> 
+    </div>
+  </div>
+</section>

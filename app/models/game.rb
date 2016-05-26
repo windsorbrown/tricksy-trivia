@@ -54,8 +54,7 @@ class Game < ApplicationRecord
   end
 
   def calculate_winner
-    winner = Player.joins(:user).joins("JOIN user_answers ON users.id = user_answers.user_id")
-    .select("SUM(user_answers.score) AS total_score, players.*").where(game_id: id).group("players.id").order('total_score DESC').first
+    winner = players.max_by{ |p| p.score }
     winner.update(winner: true)
   end
 end
