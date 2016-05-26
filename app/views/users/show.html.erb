@@ -71,7 +71,11 @@
             </div>
             <div class="box-body">
               <div class="chart-responsive">
-                <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+                <% if @user_has_played > 0 %>
+                  <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
+                <% else %>
+                  <p> You have not played any games </p>
+                <% end %> 
               </div>
             </div>
           </div>
