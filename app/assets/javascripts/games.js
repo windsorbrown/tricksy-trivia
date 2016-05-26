@@ -31,7 +31,7 @@ function subscribeRoomChannel(game_id) {
         playerList.append("<li id=\"user-" + user.id + "\"><img src=\"" + user.image + "\" class=\"img-circle\" alt=\"80\" height=\"50\" width=\"50\" /><span class=\"users-list-name\">" + user.name + "</span></li>");
       } else if (data.removed_user) {
         var _user = data.removed_user;
-        playerList.find('#user-' + user.id).remove();
+        playerList.find('#user-' + _user.id).remove();
       } else if (data.game_start) {
         var game = data.game_start.game;
         location.reload();
