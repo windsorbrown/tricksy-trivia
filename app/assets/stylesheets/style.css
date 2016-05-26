@@ -45,7 +45,7 @@ blockquote {
     -webkit-margin-end: 40px;
 }
 .example-twitter:before {
-    
+
     position: absolute;
     top: -60px;
     left: 0;
@@ -2085,3 +2085,6 @@ footer {
   font-size: 12px;
 }
 
+.label-primary {
+  cursor: pointer;
+}
