@@ -27,8 +27,8 @@ function subscribeRoomChannel(game_id) {
     received: function received(data) {
       var playerList = $('#player-list');
       if (data.added_user) {
-        var user = data.added_user;
-        playerList.append(`<li id="user-${user.id}"><img src="${user.id.image}" class="img-circle" alt="80" height="50" width="50" /><span class="users-list-name">${user.name}</span></li>`);
+        var user = data.added_user.id;
+        playerList.append("<li id=\"user-" + user.id + "\"><img src=\"" + user.image + "\" class=\"img-circle\" alt=\"80\" height=\"50\" width=\"50\" /><span class=\"users-list-name\">" + user.name + "</span></li>");
       } else if (data.removed_user) {
         var _user = data.removed_user;
         playerList.find('#user-' + _user.id).remove();
