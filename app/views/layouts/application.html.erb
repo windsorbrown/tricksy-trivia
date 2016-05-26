@@ -4,6 +4,7 @@
     <title>TricksyHobbit</title>
     
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Satisfy|Ubuntu|Droid+Serif' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -12,12 +13,8 @@
   </head>
   
   <body>
-  <!-- Full Width Column -->
-          <%= render 'layouts/navbar' %>
-             <%= yield %>
-          <%= render 'layouts/footer' %>
-        </div>
-      </div>
-    </div>
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
