@@ -14,10 +14,10 @@
 # # column: value
 1:
   question: Born Aaron Chwatt, he won an Oscar for "Sayonara" under this name
-  answer: Red Buttons
   category: reds
   choice1: Red Alda
   choice2: Red Ferrer
+  answer: Red Buttons
   choice3: Red Hagen
 
 2:
@@ -30,19 +30,19 @@
 
 3:
   question: Over 100 kinds of viruses cause colds, infections of the upper part of this tract
-  answer: Respiratory tract
   category: the cold war
   choice1: Pyramidal tract
+  answer: Respiratory tract
   choice2: Vestibulospinal tract
   choice3: Corticospinal tract
 
 4:
   question: You might have to be on a desert island before you get around to his 1722 novel "Colonel Jack"
-  answer: Daniel Defoe
   category: little-read books
   choice1: Jonathan Swift
   choice2: Voltaire
   choice3: Henry Fielding
+  answer: Daniel Defoe
 
 5:
   question: Asked "Are you a man or a mouse?", Groucho replied, "Put a piece of" this "down there and you'll find out"
@@ -54,26 +54,26 @@
 
 6:
   question: 2-word name for the Communist army that brutally ruled Cambodia in the 1970s
-  answer: Khmer Rouge
   category: communism
   choice1: Tupamaro
+  answer: Khmer Rouge
   choice2: New Jewel Movement
   choice3: Abkhazia
 
 7:
   question: He died October 11, 1991 after collapsing at a rehearsal of his new TV series, "The Royal Family"
-  answer: Redd Foxx
   category: reds
   choice1: Red Reese
   choice2: Red Aalda
   choice3: Red Gregory
+  answer: Redd Foxx
 
 8:
   question: This supersonic airliner can shuttle you from Paris to New York City in less than 4 hours
-  answer: the Concorde
   category: the rushin' revolution
   choice1: QueSST
   choice2: X-Plane
+  answer: the Concorde
   choice3: Concorde Mark 2
 
 10:
@@ -86,27 +86,27 @@
 
 11:
   question: "The tusks...were imbedded so firmly we couldn't budge them, of course in Alabama...."
-  answer: "The Tusks A Loosa"
   category: marxisms
   choice1: The Tusks A Tight
+  answer: "The Tusks A Loosa"
   choice2: The Tusks A Fractured
   choice3: The Tusks A Fallen
 
 12:
   question: Elected with both Communist & Socialist support, he was Chile's president from 1970-1973
-  answer: Salvador Allende
   category: communism
   choice1: Augusto Pinochet
   choice2: Patricio Aylwin
+  answer: Salvador Allende
   choice3: Jorge Alessandri
 
 13:
   question: From 1934 to 1938 he was the voice of the Cincinnati Reds
-  answer: Red Barber
   category: reds
   choice1: Red Brennaman
   choice2: Red Grande
   choice3: Red Piecoro
+  answer: Red Barber
 
 14:
   question: The name of this sled without runners is from a Micmac Indian word for "instrument for dragging"
@@ -118,51 +118,51 @@
 
 15:
   question: Of stress, enlarged tonsils or wet feet, the one which experts say would most likely lead to a cold
-  answer: Stress
   category: the cold war
   choice1: Enlarged tonsils
+  answer: Stress
   choice2: Wet feet
   choice3: Wet hair
 
 16:
   question: Many readers don't get through the Slough of Despond in this 1678 John Bunyan work
-  answer: The Pilgrim's Progress
   category: little-read books
   choice1: The Life and Death of Mr. Badman
   choice2: Grace Abounding to the Chief of Sinners
+  answer: The Pilgrim's Progress
   choice3: The Holy War
 
 18:
   question: Shortened from 2 Russian words, it was the supreme policy-making body in the USSR
-  answer: Politburo
   category: communism
   choice1: Politecono
   choice2: Counselburo
   choice3: Poliking
+  answer: Politburo
 
 19:
   question: In 1995 Lenny Wilkins broke this man's record as the NBA's winningest coach
-  answer: Red Auerbach
   category: reds
   choice1: Red Nelson
+  answer: Red Auerbach
   choice2: Red Wilkens
   choice3: Red Sloan
 
 21:
   question: Its "Plus" version for colds comes in sparkling original, orange & cherry flavors
-  answer: Alka-Seltzer
   category: the cold war
   choice1: Tums
   choice2: Tylenol
+  answer: Alka-Seltzer
   choice3: Advil
 
 22:
   question: Kant strained brains with this type of analysis "Of Pure Reason" & "Of Judgement"
-  answer: Critique
   category: little-read books
   choice1: Descriptive
   choice2: Exploratory
   choice3: Inferential
+  answer: Critique
 
 23:
   question: This line divides the Earth into northern & southern hemispheres
@@ -174,27 +174,27 @@
 
 24:
   question: Iberia is an airline based in this country
-  answer: Spain
   category: the name's familiar
   choice1: Colombia
+  answer: Spain
   choice2: Venezuela
   choice3: Ecuador
 
 25:
   question: This 1964 Peter Sellers title character is a mad German scientist
-  answer: "Dr. Strangelove"
   category: the movies
   choice1: I'm All Right Jack
   choice2: The Millionairess
+  answer: Dr. Strangelove
   choice3: Being There
 
 26:
   question: When this "Oliver Twist" author fell for an actress, his wife twisted his arm for a legal separation
-  answer: Charles Dickens
   category: historic amours
   choice1: Harper Lee
   choice2: Mark Twain
   choice3: Virginia Woolf
+  answer: Charles Dickens
 
 27:
   question: "People who live in glass houses..."
@@ -206,27 +206,27 @@
 
 28:
   question: She was only in her 30s when she retired from film after the release of "Two-Faced Woman" in 1941
-  answer: Greta Garbo
   category: "g.g."
   choice1: Teresa Wright
+  answer: Greta Garbo
   choice2: Barbara Stanwyck
   choice3: Ingrid Bergman
 
 29:
   question: Till is defined as the rock material dragged under one of these as it moves
-  answer: Glacier
   category: geographic terms
   choice1: Mud Slide
   choice2: Avalanche
+  answer: Glacier
   choice3: Volcano
 
 30:
   question: Landseer's Lions are at the base of Nelson's Column in this square
-  answer: Trafalgar Square
   category: the name's familiar
   choice1: Times Square
   choice2: Roman Square
   choice3: Columbia Square
+  answer: Trafalgar Square
 
 31:
   question: Christopher Atkins learns about the birds & the bees on a desert island with this actress in "The Blue Lagoon"
@@ -238,51 +238,51 @@
 
 32:
   question: He preferred the "bounty"ous beauty of Mauatua to Bligh & breadfruit
-  answer: Fletcher Christian
   category: historic amours
   choice1: Charles II
+  answer: Fletcher Christian
   choice2: Courberon
   choice3: Charles IV
 
 33:
   question: "Early to bed and early to rise, makes a man..."
-  answer: "Healthy, wealthy, and wise"
   category: completes the proverb
   choice1: "Healthy, strong, and wise"
   choice2: "Happy, healthy, and wise"
+  answer: "Healthy, wealthy, and wise"
   choice3: "Kind, wealthy, and wise"
 
 34:
   question: This composer's "Porgy And Bess" is perhaps the most popular opera ever written by an American
-  answer: George Gershwin
   category: "g.g."
   choice1: Garold Grey
   choice2: Gregory Groeler
   choice3: Garry Garrison
+  answer: George Gershwin
 
 35:
   question: A body of water usually smaller than a gulf; Botany is a famous one
-  answer: Bay
   category: geographic terms
   choice1: Harbour
+  answer: Bay
   choice2: Passage
   choice3: Strait
 
 36:
   question: In the 1960s Michael Abdul Malik of the U.K. & Malcolm Little of the U.S. both used this as their last name
-  answer: X
   category: the name's familiar
   choice1: Z
   choice2: S
+  answer: X
   choice3: T
 
 38:
   question: It's likely that Etta Place, the companion of this "kid", was a lady of the evening rather than a schoolmarm
-  answer: Sundance Kid
   category: historic amours
   choice1: Moondance Kid
   choice2: Stardance Kid
   choice3: Sunshine Kid
+  answer: Sundance Kid
 
 39:
   question: "Speech is silver, but..."
@@ -294,27 +294,27 @@
 
 40:
   question: He provided live coverage of the Summer Olympics from Atlanta, while brother Bryant covered events in Nagano
-  answer: Greg Gumbel
   category: "g.g."
   choice1: Garold Grey
+  answer: Greg Gumbel
   choice2: Gregory Groeler
   choice3: Garry Garrison
 
 41:
   question: Normally, an atoll is made of this or nothing atoll
-  answer: Coral
   category: geographic terms
   choice1: Glass
   choice2: Door
+  answer: Coral
   choice3: Mannequin
 
 42:
   question: Traditional member of the Magi whose name is also a measure equal to 16 regular bottles of champagne
-  answer: Balthazar
   category: the name's familiar
   choice1: Salmanazar
   choice2: Methuselah
   choice3: Nebuchadnezzar
+  answer: Balthazar
 
 43:
   question: Judith Guest's novel about a dysfunctional family became this 1980 movie with Mary Tyler Moore & Timothy Hutton
@@ -327,27 +327,27 @@
 
 45:
   question: "Ignorance of the law is..."
-  answer: No excuse
   category: completes the proverb
   choice1: Okay
+  answer: No excuse
   choice2: Understandable
   choice3: Reasonable
 
 46:
   question: Her disco hit "I Will Survive" became an anthem for many women & is still popular today
-  answer: Gloria Gaynor
   category: "g.g."
   choice1: Gabriel Gostad
   choice2: Gena Grabner
+  answer: Gloria Gaynor
   choice3: Geri Guzborn
 
 47:
   question: A common place name in the Southwest, from a Spanish term, it's a dry river bed
-  answer: Arroyo
   category: geographic terms
   choice1: Rio
   choice2: Seco
   choice3: Cama
+  answer: Arroyo
 
 48:
   question: Last name of Julian, UNESCO's first director-general; he was the brother of writer Aldous
@@ -359,16 +359,16 @@
 
 49:
   question: Cary Grant played retired cat burglar John Robie in this Hitchcock film
-  answer: To Catch A Thief
   category: the movies
   choice1: Psycho
+  answer: To Catch A Thief
   choice2: The Birds
   choice3: Rear Window
 
 50:
   question: Louis I's lust for Lola Montez led him to lose the throne of this German kingdom
-  answer: Bavaria
   category: historic amours
   choice1: Hanover
   choice2: Prussia
+  answer: Bavaria
   choice3: Saxony

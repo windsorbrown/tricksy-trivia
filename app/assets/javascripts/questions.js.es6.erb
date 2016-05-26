@@ -48,7 +48,21 @@ function showQuestion(question) {
   $('#player-notification').hide();
   runPieTimer();
 
-  var answerKeys = ['answer', 'choice1', 'choice2', 'choice3'];
+  var options = ['answer', 'choice1', 'choice2', 'choice3'];
+
+  function shuffle(array) {
+    var m = array.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    return array;
+  }
+
+  var answerKeys = shuffle(options);
+
   for (var i = 1; i <= 4; i++) {
     let $answerDiv = $('#answer-' + i);
     let answerText = question[answerKeys[i - 1]];
