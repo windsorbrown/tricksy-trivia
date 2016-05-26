@@ -1,0 +1,45 @@
+<br />
+<br />
+<br />
+<section class="main__middle__container">
+  <div class="container">
+    <div class="row nothing">
+      <section class="col-md-12 main-content">
+        <h3><%= image_tag(@game.owner.image, class: "  img-circle", size: 60)%>&nbsp;&nbsp; <span class="label label-primary">Welcome to <%=@game.owner.first_name %>'s game room</span>&nbsp;
+        </h3>
+        <div class ="row">
+          <div class="col-md-6 col-sm-3 text-right">
+            <section id="wait-list">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Currently Waiting Players:</h3>
+                </div>
+                <div class="box-body no-padding">
+                  <ul id="player-list" class="users-list clearfix" id = "game-list" style="list-style-type: none;">
+                    <% @game.players.each do |player| %>
+                      <li id="user-<%= player.user.id %>"><%= image_tag player.user.image, class: "img-circle" , size: 50 %>
+                      <span class="users-list-name"><%= player.user.name %></span></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section id="controls" class="col-md-6 col-md-offset-0">
+            <% if @game.owner == current_user %>
+              <%= button_to "Start the game!", game_play_game_path(@game), method: :get, class: 'btn btn-default' %>
+            <% else %>
+              <% if @player %>
+                <%= button_to "Leave this game!", game_player_path(@game, @player), method: :delete , class: 'btn btn-danger'%>
+              <% else %>
+                <%= button_to "Join this game!", game_players_path(@game)  ,class: 'btn btn-success' %>
+              <% end %>
+            <% end %>
+          </section>
+        <script>subscribeRoomChannel(<%= @game.id %>)</script>
+      </section>
+      <p></p>
+        </div>
+    </div>
+  </div>
+</section>

@@ -13,7 +13,13 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @player = @game.players.find_by(user: current_user)
-    render layout: 'page'
+    if @game.pending?
+      render 'games/pending'
+    elsif @game.active?
+      render 'games/active'
+    else
+      render 'games/finished'
+    end
   end
 
   def play
@@ -25,11 +31,6 @@ class GamesController < ApplicationController
   def play_game
     @game = Game.find(params[:game_id])
     @game.active! if current_user == @game.owner
-    redirect_to @game
-  end
-
-  def finish
-    @game = Game.find(params[:game_id])
     redirect_to @game
   end
 end
