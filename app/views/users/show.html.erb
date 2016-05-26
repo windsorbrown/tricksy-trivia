@@ -55,9 +55,9 @@
           </div>
            <% if @topscores %>
             <ul id="scoreboard" class="list-group" style="width:100%">
-             <% @topscores.each do |player| %> 
+             <% @topscores.each do |player| %>
               <li class="list-group-item" id="user-<%=player[0].id%>" data-score-field="<%=player[1]%>"><h5><%= image_tag(player[0].image, class: "img-circle", size: 35)%>&nbsp;&nbsp;&nbsp;  <span class="label label-warning"><%=player[0].name%> <span id="user-score-<%=player[0].id%>">- <%=player[1]%> Points</span></span> </h5></li>
-              <% end %> 
+              <% end %>
             </ul>
           <% end %>
           </div>
@@ -74,7 +74,7 @@
                 <%= pie_chart (@win_loss), width: "100%", height: "100%"%>
               </div>
             </div>
-          </div>       
+          </div>
 
       </aside>
     </div>
@@ -94,8 +94,8 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
       game_id = data.open_game.game.id;
       owner_name = data.open_game.owner_name;
       avatar_url = data.open_game.owner.image;
-      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'> 
-          <image src=${avatar_url} class="img-circle"></a> 
+      gameList.append(`<li> <a id=game-${game_id}' href='/games/${game_id}'>
+          <image src=${avatar_url} class="img-circle"></a>
           <span class='users-list-name'>${ owner_name } </span> </li>`);
     } else if (data.close_game && (data.close_game.game.status === 'active' || data.close_game.game.status === 'finished')) {
       let game = data.close_game.game;
@@ -108,7 +108,7 @@ App.cable.subscriptions.create({channel: "OverviewChannel"}, {
         return parseInt( oldval, 10) + parseInt(message.new_score)});
         $("#user-score-"+message.user.id).text(function(i, oldval){
         return parseInt( oldval, 10) + parseInt(message.new_score)});
-        
+
         updateBoard();
 
       } else{
