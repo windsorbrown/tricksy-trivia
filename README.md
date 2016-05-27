@@ -20,4 +20,8 @@ Deployed site
   
 Screenshots 
   
+![Alt text](/public/images/1a.png?raw=true)
+![Alt text](/public/images/2a.png?raw=true)
+![Alt text](/public/images/3a.png?raw=true)
+![Alt text](/public/images/4a.png?raw=true)
 
